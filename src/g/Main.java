@@ -6,9 +6,9 @@ import javax.mail.internet.*;
 
 public class Main {
 
-    public  String USER_NAME = "user";  
-    public  String PASSWORD = "pass"; 
-  
+    public  String USER_NAME = "hem.banking";  
+    public  String PASSWORD = ""; 
+   
     
     public  void sendFromGMail(String subject, String body,String recipent) {
         Properties props = System.getProperties();
@@ -24,7 +24,7 @@ public class Main {
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
 
-       
+        try {
             message.setFrom(new InternetAddress(USER_NAME));
             InternetAddress[] toAddress = new InternetAddress[to.length];
 
@@ -44,6 +44,12 @@ public class Main {
             transport.sendMessage(message, message.getAllRecipients());
             System.out.println("Sending done...");
             transport.close();
-       
+        }
+        catch (AddressException ae) {
+            ae.printStackTrace();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();
+        }
     }
 }
