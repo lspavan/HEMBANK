@@ -72,7 +72,21 @@ try{
 	e.printStackTrace();
 }
 	    
+		if(status>0){
 		
+			Main m=new Main();
+			Integer accno = Integer.valueOf(accn);
+	    	m.sendFromGMail("Welcome to HEM Bank","Your account number is  "+accno+"\n"+"Please use the below link to login to the application"+"\n"+"http://localhost:8086/HEMBANK/"+"\n"+ "\n"+"Thanks,"+"\n"+"HEM Bank",email);
+	    	
+			
+			RequestDispatcher rd=request.getRequestDispatcher("successregistration.jsp");
+			rd.include(request, response);
+		}
+		else{
+			out.print("Sorry,Registration failed. please try later");
+			RequestDispatcher rd=request.getRequestDispatcher("MyHtml.html");
+			rd.include(request, response);
+		}
 		
 	out.close();	
 	}
