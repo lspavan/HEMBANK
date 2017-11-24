@@ -24,9 +24,6 @@ function dil(form)
   		   return false;
   	   }
   	
-  	
-  	
-  	
 	if(!isNaN(document.F1.phone.value))
 	   {
 		   if(document.F1.phone.value >9999999999 )
