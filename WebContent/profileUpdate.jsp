@@ -31,8 +31,6 @@
 			</ul>
 		</div>
 
-
-
 		<table style="width: 897px; background: #FFFFFF; margin: 0 auto;">
 			<tr>
 				<td width="300" valign="top"
