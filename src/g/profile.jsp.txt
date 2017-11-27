@@ -6,6 +6,68 @@
 <title>HEM Banking ..</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript">
+	function ctck() {
+		var sds = document.getElementById("dum");
+
+	}
+
+function dil(form)
+{
+
+  		var email=document.F1.eamil.value;
+  		 alert(email);
+  	    substring = "@";
+  	if(email.includes(substring)){
+  		 return true;
+  	   }else{
+  		   alert("not a valid email id");
+  		   return false;
+  	   }
+  	
+  	
+  	
+  	
+	if(!isNaN(document.F1.phone.value))
+	   {
+		   if(document.F1.phone.value >9999999999 )
+		   {
+			 alert("ye kabhi nhi aayegi")
+			 document.F1.phone.value=""
+			 document.F1.phone.focus()
+	         return false   
+		   }
+	   
+	   else
+	   {
+	       alert("This  field  must  be  number")
+		   document.F1.phone.value=""
+		   return false
+	   }
+		}
+  	
+  	   }            
+function navigate(){   
+    window.location.replace('http://localhost:8089/HEMBANK/');
+   return false;
+}
+  	   
+  	   
+</SCRIPT>
+<style>
+.button {
+    background-color: #DFDCE3;
+    border: #999999;
+    color: #0375B4;
+    padding: 2px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 3px 2px;
+    cursor: pointer;
+}
+</style>
 </head>
 
 <body>
