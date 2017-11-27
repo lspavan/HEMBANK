@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>HEM Banking ..</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-
 <script type="text/javascript">
 	function ctck() {
 		var sds = document.getElementById("dum");
@@ -69,9 +68,10 @@ function navigate(){
 }
 </style>
 </head>
+
 <body>
 
-<div id="top_links">
+	<div id="top_links">
 
 
 		<div id="header">
@@ -209,18 +209,17 @@ function navigate(){
   <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright © HEM Bank 2015</div>
+  Copyright Â© HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
 document.onload = ctck();
 </script>
 </div>
-
 </body>
 </html>
 
-                 <%@ page import="java.sql.*"%>
+		<%@ page import="java.sql.*"%>
 		<%@ page import="java.io.*"%>
 		<%@ page import="javax.servlet.*"%>
 		<%@ page import="g.*"%>
