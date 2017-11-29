@@ -41,18 +41,14 @@ function dil(form)
 	   return false
 	}
 	
-   /*  if((document.F1.email.value)!="")
-    	alret("inside if...");
-    	{
-    	 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.F1.email.value))  
-   	  {  
-   	    return (true)  
-   	  }  
-   	    alert("You have entered an invalid email address!")  
-   	    return (false)  
-   	}
-    	
-    	} */
+   if(document.F1.email.value!=null)
+    {
+    	var eml=document.F1.email.value;
+    	if(!eml.contains("@"))
+	   alert("correct your email id"); 
+	     return false
+	}
+    
     
     
 	if(!isNaN(document.F1.phone.value))
