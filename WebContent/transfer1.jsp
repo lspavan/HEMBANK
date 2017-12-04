@@ -144,7 +144,11 @@ var sds = document.getElementById("dum");
 				    <tr><td>ACCOUNT NO:</td><td> <input type="text" name="accountno"/></td></tr>
 					<tr><td>USER NAME:</td><td> <input type="text" name="username"/></td></tr>
 					<tr><td>PASSWORD:</td><td> <input type="password" name="password"/></td></tr>
-				
+					<tr><td>TARGET ACCOUNT NO:</td><td><input type="text" name="taccountno"/></td></tr>
+					<tr><td>AMOUNT:</td><td> <input type="text" name="amount"/></td></tr>
+					
+					<tr><td></td><td><input type="submit" value="Submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
 					</table>
 		    		</form>
 			</td>
