@@ -40,7 +40,16 @@ function dil(form)
 	   document.F1.repassword.focus()	
 	   return false
 	}
-
+	
+   if(document.F1.email.value!=null)
+    {
+    	var eml=document.F1.email.value;
+    	if(!eml.contains("@"))
+	   alert("correct your email id"); 
+	     return false
+	    
+	}
+    
     
     
 	if(!isNaN(document.F1.phone.value))
@@ -157,7 +166,8 @@ var sds = document.getElementById("dum");
 					<tr><td><font color="black">PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="password"   maxlength="7" title="Please enter password of 7 characters maximum"/></td></tr>
 					<tr><td><font color="black">RE-PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="repassword" maxlength="7" title="Please enter retype password same as password which is of 7 character in length"/></td></tr>
 					<tr><td><font color="black">AMOUNT:</font><span style="color:red;">*</span></td><td> <input type="text" name="amount" title="Please provide Initial Deposit amount, minimum amount 500 Sek"/></td></tr>
-					
+					<!-- Gender:<br/><br/>
+					Male<input type="radio" name="gender" value="male"> Female<input type="radio" name="gender" value="female"/><br/><br/> -->
 					<tr><td><font color="black">ADDRESS:</font><span style="color:red;">*</span></td><td> <input type="text" name="adderess" title="Please provide your current location here"/></td></tr>
 					<tr><td><font color="black">PHONE:</font></td><td> <input type="text" name="phone" title="Please provide mobile and land number here"  maxlength="10"/></td></tr>
 					<tr><td><font color="black">Email:</font><span style="color:red;">*</span></td><td> <input type="text" name="email" title="Please provide Valid Email here"/></td></tr>
@@ -178,7 +188,7 @@ var sds = document.getElementById("dum");
     	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
 		     <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
 		    <br>
-		     
+		     <!-- <p> Our banking products are simple and less complicated, and designed to keep your hard-earned money in your pocket. --> 
 		      <p>And we make it easy for you to keep on top of your online banking options.  With the right products and our knowledgeable staff to guide you – we are confident there is no goal too high for you to achieve.</p>
 	    	
 	    </div>      

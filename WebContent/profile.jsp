@@ -31,7 +31,7 @@ function dil(form)
 	   {
 		   if(document.F1.phone.value >9999999999 )
 		   {
-			 alert("not a valid phone number")
+			 alert("ye kabhi nhi aayegi")
 			 document.F1.phone.value=""
 			 document.F1.phone.focus()
 	         return false   
@@ -129,7 +129,7 @@ function dil(form)
   <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright ?HEM Bank 2015</div>
+  Copyright © HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
