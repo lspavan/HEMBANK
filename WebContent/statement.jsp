@@ -1,5 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ page import="java.sql.*"%>
+			<%@ page import="java.io.*"%>
+			<%@ page import="javax.servlet.*"%>
+			<%@ page import="g.*"%>
 <html>
 <head>
 
@@ -65,7 +68,9 @@ function navigate() {
 
 		<div id="navigation">
 			<ul>
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>	
+				<li><a href="balance.jsp">VIEW BALANCE</a></li>						
+				<li><a href="transfer1.jsp">TRANSFER</a></li>
+				<li><a href="profile.jsp">PROFILE</a></li>
 			</ul>
 		</div>
 
@@ -97,12 +102,15 @@ function navigate() {
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright © HEM Bank 2015</div>
+  Copyright Â© HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
 document.onload = ctck();
 </script>
+			<jsp:include page="pi.jsp" flush="true">
+			<jsp:param name="accno" value="${Accn}" /> 
+			</jsp:include>
 </div>
 </body></html>
 
