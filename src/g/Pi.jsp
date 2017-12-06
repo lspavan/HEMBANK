@@ -5,11 +5,11 @@
 
 <html>
 <body>
-<%int draw = 0;
+<%
+int draw = 0;
 	int dep = 0;
 	
 		try {
-
 			Object accno = session.getAttribute("accountno");
 			System.out.println("accno in pie" + accno.toString());
 			Connection con1 = GetCon.getCon();
