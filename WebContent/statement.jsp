@@ -1,5 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ page import="java.sql.*"%>
+			<%@ page import="java.io.*"%>
+			<%@ page import="javax.servlet.*"%>
+			<%@ page import="g.*"%>
 <html>
 <head>
 
@@ -65,7 +68,14 @@ function navigate() {
 
 		<div id="navigation">
 			<ul>
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>	
+				<li><a href="balance.jsp">VIEW BALANCE</a></li>				
+				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
+				<li><a href="transfer1.jsp">TRANSFER</a></li>
+				<li><a href="paybill1.jsp">BILL PAY</a></li>
+				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
+				<li><a href="userrating.jsp">USER RATING</a></li>
+				<li><a href="profile.jsp">PROFILE</a></li>
+
 			</ul>
 		</div>
 
@@ -76,18 +86,74 @@ function navigate() {
 
 
 				<td width="1200" valign="top">
-					
+					<% 
+%> <!-- checking the passed values --> <%Object accno=session.getAttribute("accountno");
+    	
+    	/* out.println("object value is :::"+accno.toString());
+    	 out.println("value is "+session.getAttribute("accountno")); */
+    	 
+    	 String Accn=accno.toString();
+    	 System.out.println("ACCN is :::"+Accn);
+    	 
+    	 %>
 
 
 
 					<table>
-						
-					</table> 
+						<%
+
+try {
+		    Connection con1=GetCon.getCon();			
+			PreparedStatement ps1=con1.prepareStatement("Select * from TRANSCATIONS WHERE accountno= "+accno.toString() +" order by TRANSCATDATE desc");
+			//PreparedStatement ps1=con1.prepareStatement("Select accountno from NEWACCOUNT where accountno='"+passedaccountno+"'");
+          
+            ResultSet rs1=ps1.executeQuery();
+            System.out.println("After result set");
+         /*    while(rs1.next()){
+				int  accountno=rs1.getInt(6);
+				request.setAttribute("accountno",accno.toString());
+				} */
+		
+        
+			
+			out.print("<table align='left'  cellspacing='6' cellpadding='6'>");
+				
+			out.print("<tr><th>ACCOUNTNo</th><th>TRANSCATIONDATE</th><th>NARRATION</th><th>WITHDRAWL</th><th>DEPOSIT</th><th>BALANCE</th></tr>");
+			
+			while(rs1.next()){				
+				out.print("<tr>");
+				out.print("<td> <font color='black'>" + rs1.getInt(6) + "</font></td>");				
+				out.print("<td> <font color='black'>" + rs1.getString(1) + "</font></td>");
+				out.print("<td> <font color='black'>" + rs1.getString(2) + "</font></td>");				
+				out.print("<td> <font color='black'>" + rs1.getInt(3) + "</font></td>");
+				out.print("<td> <font color='black'>" + rs1.getInt(4) + "</font></td>");
+				out.print("<td> <font color='black'>" + rs1.getInt(5) + "</font></td>");
+								
+				
+				//out.print("<td><a href='DeleteServlet' >Delete</a></td>");
+				session.setAttribute("accountno",rs1.getInt(6));
+			    
+				out.print("</tr>");
+			    
+			}
+			
+			out.print("</table>");
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+   
+			%>
+					</table> <%
+%>
 				
 		</table>
 
 <br><br>
-		
+		<jsp:include page="pi.jsp" flush="true">
+			<jsp:param name="accno" value="${Accn}" /> 
+  
+			</jsp:include>
 <div id="footer_top">
   <div id="footer_navigation">
   
@@ -97,7 +163,7 @@ function navigate() {
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright © HEM Bank 2015</div>
+  Copyright Â© HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
