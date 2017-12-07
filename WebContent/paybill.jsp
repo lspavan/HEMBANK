@@ -3,6 +3,7 @@
 <head>
 
 
+
 </head>
 
 <body>
@@ -19,6 +20,8 @@
         String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		
+		/* String num1=request.getParameter("taccountno");
+		int taccountno=Integer.parseInt(num1); */
 		
 		String biller=request.getParameter("billeraccount");
 		int billeracc=Integer.parseInt(biller);
@@ -79,6 +82,58 @@
 			ResultSet rs3=ps3.executeQuery();
 			
 			
+			// Logic for transcations of transfer amount through online...
+			Connection con4=GetCon.getCon();
+			
+			PreparedStatement ps4=con4.prepareStatement(" insert into transcations  values(?,?,?,?,?,?)");
+			java.util.Date today = new java.util.Date();
+		    SimpleDateFormat sm = new SimpleDateFormat("MM/dd/yyyy");			  
+		    String strDate = sm.format(today);
+			    
+					ps4.setString(1, strDate);
+					
+					ps4.setString(2, "Bill Pay");
+					ps4.setInt(3, accoun);
+					ps4.setInt(4, 0);
+					System.out.println("deposit is "+accoun);
+					ps4.setInt(5,dataamount1);
+					System.out.println("balance is "+dataamount1);
+					ps4.setInt(6,accountno);
+					System.out.println("accountno is "+accountno);
+					
+			ps4.executeUpdate();
+			//ResultSet rs4=ps1.executeQuery();
+			
+			
+			Connection con5=GetCon.getCon();			
+			PreparedStatement ps5=con5.prepareStatement(" insert into transcations  values(?,?,?,?,?,?)");
+				
+			    
+					ps4.setString(1, strDate);
+					
+					ps4.setString(2, "pay bill");
+					ps4.setInt(3, 0);
+					ps4.setInt(4, accoun);
+					System.out.println("deposit is "+accoun);
+					ps4.setInt(5,dataamount);
+					System.out.println("balance is "+dataamount1);
+					ps4.setInt(6,billeracc);
+					System.out.println("accountno is "+billeracc);					
+			        ps4.executeUpdate();
+			
+			        System.out.println("debit email is ::"+debitemail);
+			        Main m=new Main();					
+			    	m.sendFromGMail("HEM-BANK Billing Transcation notification","Your account bearing with the nmber "+accountno+" has been debited with the amount  "+accoun+" and the Avaialbe balance is "+dataamount1+"."+"\n"+ "\n"+"Thanks,"+"\n"+"HEM Bank",debitemail);
+			    	
+			    	System.out.println("creditemail email is ::"+creditemail);
+			    	Main m1=new Main();					
+			    	m1.sendFromGMail("HEM-BANK Billing Transcation notification","Your account bearing with the nmber  "+billeracc+" has been credited with the amount  "+accoun+" and the Avaialbe balance is "+dataamount+"."+"\n"+ "\n"+"Thanks,"+"\n"+"HEM Bank",creditemail);
+			    	
+			
+			if(rs3.next()){
+		
+			request.setAttribute("target account A",dataamount);
+			request.setAttribute("account B",dataamount1);	
 			%>
 			<jsp:forward page="tbalance.jsp"></jsp:forward> 
 			<% 
@@ -86,13 +141,20 @@
 			}
 			
 		}
-	
+		else{
+			out.print("Please check your username and Password and target accountno");
+			request.setAttribute("balance","Please check your username and Password and target acountno");
+			%>
+			<jsp:forward page="transfer1.jsp"></jsp:forward> 
+			<% 
+			}
 		 }catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-			%></body></html>
+			%>
+    	
+    	
+	</body></html>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date,java.text.*"%>
 <%@ page import="java.io.*" %>
