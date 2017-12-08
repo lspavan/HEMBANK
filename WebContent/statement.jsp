@@ -124,9 +124,17 @@ try {
 				out.print("<tr>");
 				out.print("<td> <font color='black'>" + rs1.getInt(6) + "</font></td>");				
 				out.print("<td> <font color='black'>" + rs1.getString(1) + "</font></td>");
-				out.print("<td> <font color='black'>" + rs1.getString(2) + "</font></td>");				
+				out.print("<td> <font color='black'>" + rs1.getString(2) + "</font></td>");
+				if(rs1.getInt(3)!=0){
+					out.print("<td> <font color='red'>" + rs1.getInt(3) + "</font></td>");
+				}else{
 				out.print("<td> <font color='black'>" + rs1.getInt(3) + "</font></td>");
-				out.print("<td> <font color='black'>" + rs1.getInt(4) + "</font></td>");
+				}
+				if(rs1.getInt(4)!=0){
+				out.print("<td> <font color='green'>" + rs1.getInt(4) + "</font></td>");
+				}else{
+					out.print("<td> <font color='black'>" + rs1.getInt(4) + "</font></td>");
+				}
 				out.print("<td> <font color='black'>" + rs1.getInt(5) + "</font></td>");
 								
 				
@@ -163,7 +171,7 @@ try {
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright Â© HEM Bank 2015</div>
+  Copyright © HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
@@ -171,5 +179,3 @@ document.onload = ctck();
 </script>
 </div>
 </body></html>
-
-			
