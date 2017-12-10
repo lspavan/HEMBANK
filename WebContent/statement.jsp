@@ -75,7 +75,6 @@ function navigate() {
 				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
 				<li><a href="userrating.jsp">USER RATING</a></li>
 				<li><a href="profile.jsp">PROFILE</a></li>
-
 			</ul>
 		</div>
 
