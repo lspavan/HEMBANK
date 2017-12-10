@@ -170,8 +170,7 @@ try {
   
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
-	  
-  Copyright © HEM Bank 2015</div>
+</div>
 </div>
 
 <script type="text/javascript">
