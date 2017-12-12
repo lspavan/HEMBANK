@@ -56,21 +56,54 @@
 								System.out.println("username and password "+username+"--"+password);
 								session.setAttribute("accountno",accno);
 								
-							
+							Connection con=GetCon.getCon();
+							PreparedStatement ps=con.prepareStatement("Select * from ratedcustomer where customerId=?");
+						            ps.setInt(1,accountno);
+							ResultSet rs=ps.executeQuery();
+							System.out.println("after execute query");
+							while(rs.next()){
+								   
+								customerId=rs.getInt(1);
+								//String stringbalance=String.valueOf(balance);						
+							}
+							rs.close();
+							System.out.println("customer id - accountno "+customerId+"--"+accountno);
+							if(customerId==accountno){
+								Connection con1=GetCon.getCon();
+								PreparedStatement ps1=con1.prepareStatement("Select * from rating");							            
+								ResultSet rs1=ps1.executeQuery();								
+								while(rs1.next()){
+									   one=rs1.getInt(1);									  
+									   two=rs1.getInt(2);									   
+									   three=rs1.getInt(3);									   
+									   four=rs1.getInt(4);									   
+									   five=rs1.getInt(5);									   
+									   System.out.print(one+"--"+two+"--"+three+"--"+four+"--"+five);
+															
+								}			
+								
+								average=((five*5)+(four*4)+(three*3)+(two*2)+(one*1));
+								System.out.println(average);
+								average=average/(one+two+three+four+five);
+								 DecimalFormat twoDForm = new DecimalFormat("#.00");
 								
 								%>
-							   
-							    
-							    
-								
-								<%} 
+								 <%out.print(twoDForm.format(average));%></b>
+								 <%}else{%>
+								 
+								 
+								 
+								 	<%}
+						
+							
+					
 							
 								 }catch (SQLException e) {
 							e.printStackTrace();
 							System.out.println("session expired please login again");
 								}
 								
-								
+							
 						%>
 
 
@@ -82,7 +115,7 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright ?HEM Bank 2017
+				Copyright ?HEM Bank 2015
 			</div>
 		</div>
 	</div>
