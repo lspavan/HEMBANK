@@ -23,6 +23,16 @@ try {
             ps.setInt(1,accountno);
 	ResultSet rs=ps.executeQuery();
 	
+	while(rs.next()){
+	    int accountno1=rs.getInt(1);
+		session.setAttribute("accountno",accountno);
+		
+		balance=rs.getInt(6);
+		stringbalance=String.valueOf(balance);
+	
+		
+	
+	}
 	
 	
 	} catch (SQLException e) {
