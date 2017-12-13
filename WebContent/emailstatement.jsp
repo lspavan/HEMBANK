@@ -38,7 +38,7 @@
 	
 	
 	$( function() {
-		$("#datepicker").datepicker();
+		$("#datepicker").datepicker({maxDate: '+0d'});
 		$("#datepicker1").datepicker({maxDate: '+0d'});
 	  } );
 </script>
@@ -111,10 +111,60 @@
 				</td>
 
 				<td width="1200" valign="top">
-					
+					<%
+						
+					%>
 					<table>
 						<tr>
-							<td><font color="black"> 
+							<td><font color="black"> <%
+						try{
+							Object accno=session.getAttribute("accountno");						
+						    Object usern=session.getAttribute("username");  
+						    Object pwd=session.getAttribute("password");  
+						    	 String Accn=accno.toString();
+						    	 String username=usern.toString();
+						    	 String password=pwd.toString();
+						    	 System.out.println("ACCN is :::"+Accn);
+						    	 int customerId=0;
+						    	 int one=1,two=1,three=1,four=1,five=1;
+						    	 double average=1.1;
+						
+							
+								int accountno=Integer.parseInt(Accn);						        
+								System.out.println("username and password "+username+"--"+password);
+								session.setAttribute("accountno",accno);
+								
+							Connection con=GetCon.getCon();
+							PreparedStatement ps=con.prepareStatement("Select * from ratedcustomer where customerId=?");
+						            ps.setInt(1,accountno);
+							ResultSet rs=ps.executeQuery();
+							System.out.println("after execute query");
+							while(rs.next()){
+								   
+								customerId=rs.getInt(1);
+								//String stringbalance=String.valueOf(balance);						
+							}
+							rs.close();
+														
+								Connection con1=GetCon.getCon();
+								PreparedStatement ps1=con1.prepareStatement("Select * from rating");							            
+								ResultSet rs1=ps1.executeQuery();								
+								while(rs1.next()){
+									   one=rs1.getInt(1);									  
+									   two=rs1.getInt(2);									   
+									   three=rs1.getInt(3);									   
+									   four=rs1.getInt(4);									   
+									   five=rs1.getInt(5);									   
+									   System.out.print(one+"--"+two+"--"+three+"--"+four+"--"+five);
+															
+								}			
+								
+								average=((five*5)+(four*4)+(three*3)+(two*2)+(one*1));
+								System.out.println(average);
+								average=average/(one+two+three+four+five);
+								 DecimalFormat twoDForm = new DecimalFormat("#.00");
+								
+								%>
 							    
 								
 								
@@ -131,9 +181,21 @@
 
 									</form>
 							
-						</font></td>
+						 <%
+							
+								 }catch (SQLException e) {
+							e.printStackTrace();
+							System.out.println("session expired please login again");
+								}
+								
+								//}
+								
+							//}
+						%></font></td>
 						</tr>
-					</table> 
+					</table> <%
+						
+					%>
 				
 		</table>
 
@@ -152,7 +214,7 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright © HEM Bank 2015
+				Copyright Â© HEM Bank 2015
 			</div>
 		</div>
 
@@ -163,3 +225,8 @@ document.onload = ctck();
 </body>
 </html>
 
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ page import="javax.servlet.*"%>
+<%@ page import="g.*"%>
+<%@ page import="java.text.DecimalFormat"%>

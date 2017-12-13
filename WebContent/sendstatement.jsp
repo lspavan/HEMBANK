@@ -66,11 +66,50 @@
 				</td>
 
 				<td width="1200" valign="top">
-					
-					<table><tr><td><font color="black">
+					<%
 						
+					%>
+					<table><tr><td><font color="black">
+						<%
+							System.out.println("reached send statment");
+											 String startDate=request.getParameter("startdate");							 
+											 Object accno=session.getAttribute("accountno");
+											 String Accn=accno.toString();											
+												 String endDate=request.getParameter("enddate");
+												 String query="";
+												 String email="";
+												 int accountNumber=Integer.valueOf(Accn);
+													System.out.println("start and end dates "+startDate+" "+endDate);
+													Connection con=GetCon.getCon();
+													PreparedStatement ps=con.prepareStatement("Select Email from NEWACCOUNT where accountno=?");
+												            ps.setInt(1,accountNumber);
+													ResultSet rs=ps.executeQuery();										
+											
+													while(rs.next()){
+													    email=rs.getString(1);
+													}
+													
+													
+													PdfWrite pdf=new PdfWrite();
+													pdf.writeUsingIText("D:/Files/EMAIL-STATEMENT.pdf",startDate,endDate,Accn,email);
+													
+													
+													out.print("<table align='left' cellspacing='5' cellpadding='5'>");
+																								
+													out.print("<tr>");
+													out.print("<th> Statment has been sent to your email Id which is registered with us   </th>");
+													
+													out.print("</tr>");												
+												
+												out.print("</table>");
+													
+													
+												
+						%>
 								</font></td></tr>
-					</table> 
+					</table> <%
+						
+					%>
 				
 		</table>
 <div id="footer_top">
@@ -82,7 +121,7 @@
   <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright © HEM Bank 2015</div>
+  Copyright Â© HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
@@ -92,4 +131,7 @@ document.onload = ctck();
 </body>
 </html>
 
-	
+		<%@ page import="java.sql.*"%>
+		<%@ page import="java.io.*"%>
+		<%@ page import="javax.servlet.*"%>
+		<%@ page import="g.*"%>
