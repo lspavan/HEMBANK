@@ -5,43 +5,38 @@
 <html>
 <head>
 <SCRIPT LANGUAGE="JavaScript">
-function dil(form)
-{
-   for(var i=0; i<form.elements.length; i++)
-   {
-		if(form.elements[i].value == "")
-		{
-		   alert("Fill out all Fields")
-		   document.F1.accountno.focus()
-		   return false
+
+	function personalnoBlur(){
+		if(isNaN(document.getElementById("personalno").value)){
+	      
+	   	  document.getElementById("aaa").innerHTML="This Field must be numbers";
+	      return false;
+	   }else{
+		   return true;
+	   }
+	}
+		function pincodeBlur(){
+		if(isNaN(document.getElementById("pincode").value)){
+		      
+		   	  document.getElementById("bbb").innerHTML="This Field must be numbers";
+		      return false;
+		   }
 		}
-   }
-
-   if(isNaN(document.F1.accountno.value))
-   {
-       alert("Accountno must  be  number & can't be null")
-	   document.F1.accountno.value=""
-	   document.F1.accountno.focus()
-	   return false
-   }
-   if(!isNaN(document.F1.username.value))
-   {
-       alert("User Name  must  be  char's & can't be null")
-	   document.F1.username.value=""
-	   document.F1.username.focus()
-	   return false
-   }
-
-   if(!isNaN(document.F1.password.value))
-   {
-       alert("Password  must  be  char's & can't be null")
-	   document.F1.password.value=""
-	   document.F1.password.focus()
-	   return false
-   }
+	
+		function checkform()
+		{
+			var flagpersonal=personalnoBlur();
+			var flagpincode=pincodeBlur();
+			personalnoBlur();
+			pincodeBlur();
+			if(flagpersonal==true&&flagpincode==true){
+				return true;
+			}else{
+				return false;
+				}
+				
+		}
    
-   return true   
-}
 
 </SCRIPT>
 
@@ -55,6 +50,8 @@ function ctck()
 var sds = document.getElementById("dum");
 
 }
+
+
 </script>
 
 </head>
@@ -66,7 +63,7 @@ var sds = document.getElementById("dum");
 
 <div id="header">
 	<h1>HEM BANK<span class="style1"></span></h1>
-		<h2>TRANSCAT SIMPLE</h2>	
+			<h2>TRANSCAT SIMPLE</h2>	
 
 </div>
 
@@ -90,18 +87,19 @@ var sds = document.getElementById("dum");
 		</tr>
 		<tr>
 			<td>
-				<form name=F1 onSubmit="return dil(this)" action="index.jsp" >
+				<form name=F1 onSubmit="return checkform()" action="index.jsp" >
 				   <table cellspacing="5" cellpadding="3">	
 				  	
-				  	<tr><td><font color="black">ACCOUNT NO:</font></td><td> <input type="text" name="accountno"/></td></tr>
-					<tr><td><font color="black">USER NAME:</font></td><td> <input type="text" name="username"/></td></tr>
-					<tr><td><font color="black">PASSWORD:</font></td><td> <input type="password" name="password"/></td></tr>
+				  
+					<tr><td><font color="black">PERSONAL NO:</font></td><td> <input type="text" id="personalno"/><div id ="aaa"></div></td></tr>
+					<tr><td><font color="black">PINCODE:</font></td><td> <input type="text" id="pincode"/><div id ="bbb"></div></td></tr>
 					
 					<tr><td></td><td><input type="submit" value="Submit"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;
                    
                    <INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
              	</table>
+             	
 				</form>
 			</td>
 		</tr>
