@@ -5,6 +5,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>HEM Banking ..</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function ctck() {
+		var sds = document.getElementById("dum");
+
+	}	
+	function navigate(){ 
+		window.history.forward();
+		window.history.go(-2);
+	    window.location.replace('http://localhost:8089/HEMBANK/');
+	   return false;
+	}
+	
+	function dil(rate){		
+		if(document.usrrateform.rating.value=='select'){
+			alert("Please select one rating option before you proceed");
+			return false;
+		}else{
+			var value=document.usrrateform.rating.value;
+			return true;
+		}
+	}
+	
+</script>
 <style>
 .button {
 	background-color: #DFDCE3;
@@ -25,8 +48,27 @@
 
 	<div id="top_links">
 
+
+		<div id="header">
+			<h1>
+				HEM BANK<span class="style1"></span>
+			</h1>
+			<h2>TRANSCAT SIMPLE</h2>
+			<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
+			<br>
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="logout.jsp" >logout</a>
+		</div>
+
 		<div id="navigation">
 			<ul>
+
 				<li><a href="balance.jsp">VIEW BALANCE</a></li>
 				<li><a href="statement.jsp">STATEMENT</a></li>
 				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
@@ -38,7 +80,29 @@
 			</ul>
 		</div>
 
-<%
+
+
+		<table style="width: 897px; background: #FFFFFF; margin: 0 auto;">
+			<tr>
+				<td width="300" valign="top"
+					style="border-right: #666666 1px dotted;">
+					<div id="services">
+						<h1>Services</h1>
+						<br>
+						<ul>
+							<li><a href="#">https://www.hembank.se/</a></li>
+						</ul>
+
+					</div>
+				</td>
+
+				<td width="1200" valign="top">
+					<%
+						
+					%>
+					<table>
+						<tr>
+							<td><font color="black"> <%
 						try{
 							Object accno=session.getAttribute("accountno");						
 						    Object usern=session.getAttribute("username");  
@@ -88,23 +152,67 @@
 								 DecimalFormat twoDForm = new DecimalFormat("#.00");
 								
 								%>
-								 <%out.print(twoDForm.format(average));%></b>
-								 <%}else{%>
-								 
-								 
-								 
-								 	<%}
+							    Thanks, You have already provided your feed back... <br> <br>
+							    <table border=1 align=center>							    
+							    <tr><td><span style="color:blue;"> Current Rating is: </span>&nbsp;&nbsp;<b>
+							    
+							    <%out.print(twoDForm.format(average));%></b>
+							    
+							    </td></tr>
+							    
+							    </table>
+								
+								
+								<%}else{%>
+							<form name="usrrateform" id="usrform" onSubmit="return dil(this)" action="ratingupdate.jsp">
+							<table border="1" align="center"><tr><td>
+							<span style="color:black;"> Please provide your rating below: </span><br><br>
+										<select name="rating">
+											<option value="select">Select</option>
+											<option value="five">5-Excellent</option>
+											<option value="four">4-Good</option>
+											<option value="three">3-Average</option>
+											<option value="two">2-Need Improvement</option>
+											<option value="one">1-Poor</option>
+										</select></td></tr>
+							<br>
+							<tr><td>
+							<textarea rows="4" cols="50" name="comment" >Enter comments here...</textarea>
+
+							</td></tr>
+							<tr><td>
+							<input type="submit" name="Submit" value=" Submit Rating "></td></tr></table>
+
+									</form>
+							
+							<%}
 						
 							
-					
+						
+							
+						%> <%
 							
 								 }catch (SQLException e) {
 							e.printStackTrace();
 							System.out.println("session expired please login again");
 								}
 								
-							
-						%>
+								//}
+								
+							//}
+						%></font></td>
+						</tr>
+					</table> <%
+						
+					%>
+				
+		</table>
+
+
+
+		
+
+
 
 
 		<div id="footer_top">
@@ -115,9 +223,19 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright ?HEM Bank 2015
+				Copyright © HEM Bank 2015
 			</div>
 		</div>
+
+		<script type="text/javascript">
+document.onload = ctck();
+</script>
 	</div>
 </body>
 </html>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ page import="javax.servlet.*"%>
+<%@ page import="g.*"%>
+<%@ page import="java.text.DecimalFormat"%>

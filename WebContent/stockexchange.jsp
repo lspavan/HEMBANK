@@ -9,16 +9,29 @@
 	function ctck() {
 		var sds = document.getElementById("dum");
 
-	}
-	function navigate() {
+	}	
+	function navigate(){ 
 		window.history.forward();
-		window.history.go(-100);
-		window.location.replace('http://localhost:8089/HEMBANK/');
-		return false;
+		window.history.go(-2);
+	    window.location.replace('http://localhost:8089/HEMBANK/');
+	   return false;
 	}
-
+	
 </script>
-
+<style>
+.button {
+    background-color: #DFDCE3;
+    border: #999999;
+    color: #0375B4;
+    padding: 2px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 3px 2px;
+    cursor: pointer;
+}
+</style>
 </head>
 
 <body>
@@ -27,13 +40,10 @@
 
 
 		<div id="header">
-	<h1>
-				HEM BANK<span class="style1"></span>
-			</h1>
-			<h2>TRANSCAT SIMPLE</h2>
-			<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
-			<br>
-			<br>
+		<h1>HEM BANK<span class="style1"></span></h1>
+	<h2>TRANSCAT SIMPLE</h2>
+	<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>
+			<br><br><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,6 +56,7 @@
 		<div id="navigation">
 			<ul>
 		
+			
 			</ul>
 		</div>
 
@@ -59,73 +70,17 @@
 						<h1>Services</h1>
 						<br>
 						<ul>
-        	<li><a href="#">https://www.hembank.se/</a></li>           
+        	<li><a href="http://localhost:8089/HEMBANK/about.jsp">https://www.hembank.se/</a></li>           
             </ul>
 
 					</div>
 				</td>
 
 				<td width="1200" valign="top">
-					<%
-						
-					%>
+					
 					<table><tr><td><font color="black">
-						<%
-						try{
-							 String rating=request.getParameter("rating");							 
-							 Object accno=session.getAttribute("accountno");
-							 String Accn=accno.toString();
-							
-								 String comments=request.getParameter("comment");
-								 String query="";								 
-								 if(!rating.equals(null) || !rating.equals("")){
-									if(rating.equals("five")){
-									query="update rating set five=five+1";
-									}else if(rating.equals("four")){
-										query="update rating set four=four+1";
-										}else if(rating.equals("three")){
-											query="update rating set three=three+1";
-										}else if(rating.equals("two")){
-											query="update rating set two=two+1";
-										}else{
-											query="update rating set one=one+1";
-										}
-									
-									
-									Connection conr=GetCon.getCon();
-									PreparedStatement psr=conr.prepareStatement(query);
-									ResultSet rsr=psr.executeQuery();
-									
-								 }
-								
-													
-							
-								int accountno=Integer.parseInt(Accn);						        
-								
-							   
-								
-							Connection con=GetCon.getCon();
-							PreparedStatement ps=con.prepareStatement("insert into ratedcustomer (customerid,comments) values(?,?)");
-						            ps.setInt(1,accountno);
-						            ps.setString(2,comments);
-							ResultSet rs=ps.executeQuery();
-							
-							session.setAttribute("accountno",accountno);
-							
-							%>
-							<jsp:forward page="userrating.jsp"></jsp:forward> 
-								 <%}catch (SQLException e) {
-							e.printStackTrace();
-							System.out.println("session expired please login again");
-								}
-								
-								//}
-								
-							//}
-						%></font></td></tr>
-					</table> <%
-						
-					%>
+</font></td></tr>
+					</table> 
 				
 		</table>
 <div id="footer_top">
@@ -137,7 +92,7 @@
   <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright © HEM Bank 2015</div>
+ </div>
 </div>
 
 <script type="text/javascript">
@@ -147,7 +102,4 @@ document.onload = ctck();
 </body>
 </html>
 
-		<%@ page import="java.sql.*"%>
-		<%@ page import="java.io.*"%>
-		<%@ page import="javax.servlet.*"%>
-		<%@ page import="g.*"%>
+		
