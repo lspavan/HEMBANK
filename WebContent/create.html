@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -15,57 +18,90 @@
   </style>
   
 <SCRIPT  type="text/javascript">
+
+function(){
+    var imgLen = document.getElementById('imgGallary');
+    var images = imgLen.getElementsByTagName('img');
+    var counter = 1;
+
+    if(counter <= images.length){
+        setInterval(function(){
+            images[0].src = images[counter].src;
+            console.log(images[counter].src);
+            counter++;
+
+            if(counter === images.length){
+                counter = 1;
+            }
+        },4000);
+    }
+})();
+
+
  $(document).click(function() {
       $(this).tooltip( "option", "hide", { effect: "explode", duration: 500 } ).off("focusin focusout");
   });
- function personalBlur()
- {
- 	if(!isNaN(document.getElementById("personalno").value))
- 	{
- 		document.getElementById("aaa").innerHTML("This Fields Must Be Number");
- 		return false
- 	}
- 	else{return true}
- }
-function fillBlur()
+function dil(form)
 {
-for(var i=0;i<document.elements.lenth;i++){
-		if(document.elements[i].value == "")
-		{
-		   alert("Fill out all Fields")
-		   document.getElementById("personalno").focus()
-		   return false
-		}
-		else{return true}
-}
-}
-function emailBlur()
-{
-if(document.getElementById("email").value!=null)
-    {
-    	var eml=document.getElementById("email").value;
-    	if(!eml.contains("@"))
-	   alert("correct your email id"); 
-	     return false
-	    
-	}
-    else{return true}
-}
-function checkform()
-{   
-	var flagpersonal=personalBlur();
-	var flagfill=fillBlur();
-	var flagemail=emailBlur();
-	personalBlur();
-    fillBlur();
-    emailBlur();
 	
+	
+	  for(var i=0; i<form.elements.length; i++)
+	   {
+			if(form.elements[i].value == "")
+			{
+			   alert("Fill out all Fields");
+			   document.F1.username.focus();
+			   return false;
+			}
+	   }
+	
+	
+
+    
+    
+	if(!isNaN(document.F1.phone.value))
+   {
+	   if(document.F1.phone.value >9999999999 )
+	   {
+		 alert("ye kabhi nhi aayegi");
+		 document.F1.phone.value="";
+		 document.F1.phone.focus();
+         return false;  
+	   }
+   }
+   else
+   {
+       alert("This  field  must  be  number");
+	   document.F1.phone.value="";
+	   return false;
+   }
+	
+	
+	
+
+   if(!isNaN(document.F1.amount.value))
+   {
+	   if(document.F1.amount.value < 500)
+	   {
+		 alert("Minimum Balance should be 500 /-");
+		 document.F1.amount.value="";
+		 document.F1.amount.focus();
+         return false;   
+	   }
+   }
+   else
+   {
+       alert("Amount  field  must  be  number");
+	   document.F1.amount.value="";
+	   return false;
+   }
    
-   if(flagpersonal==true&&flagfill==true&&flagemail==true){return true}
-   	else{return false}
+  
+ 
 
    
-   
+
+   return true;  
    }
 </SCRIPT>
 
@@ -102,53 +138,55 @@ var sds = document.getElementById("dum");
 
 
 <table style="width:897px; background:#FFFFFF; margin:0 auto;">
-<tr >   
-    <td width="1200" valign="top" lenth="40%">
+<tr >
+	
+    
+    <td width="1200" valign="top">
     	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>OPEN ACCOUNT FORM</h1><br>
     	    <table  align="center" bgcolor="white">
-		
 		<tr>
 			
-				<form name=F1 onSubmit="return checkform()"  >
-				 
+		</tr>
+		<tr>
+			<td>
+				<form name=F1 onSubmit="return dil(this)" action="CreateServlet" >
+				  <table cellspacing="5" cellpadding="3">	
 				
-					<tr><td><font color="black">PERSONAL NO:</font><span style="color:red;">*</span></td><td> <input  type="text" name="personalno" title="Please enter your personalno here which is further used for login"/><div id="aaa"></div></td></tr>
-					<tr><td><font color="black">FULL NAME:</font></td><td> <input type="text" name="fullname" title="Please enter your First Name and last Name here"/></td></tr>
+					<tr><td><font color="black">PERSONAL NUMBER:</font><span style="color:red;">*</span></td><td> <input  type="text" name="personalnumber" title="Please enter your username here which is further used for login"/></td></tr>
+					<tr><td><font color="black">FULL NAME:</font><span style="color:red;">*</span></td><td> <input type="text" name="fullname" title="Please enter your First Name and last Name here"/></td></tr>
+					<!-- <tr><td><font color="black">PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="password"   maxlength="7" title="Please enter password of 7 characters maximum"/></td></tr>
+					<tr><td><font color="black">RE-PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="repassword" maxlength="7" title="Please enter retype password same as password which is of 7 character in length"/></td></tr>
+					
+					<!-- Gender:<br/><br/>
+					Male<input type="radio" name="gender" value="male"> Female<input type="radio" name="gender" value="female"/><br/><br/> -->
 					<tr><td><font color="black">ADDRESS:</font><span style="color:red;">*</span></td><td> <input type="text" name="adderess" title="Please provide your current location here"/></td></tr>
-					<tr><td><font color="black">PHONE:</font></td><td> <input type="text" name="phone" title="Please provide mobile and land number here"  maxlength="10"/></td></tr>
+					<tr><td><font color="black">PHONE:</font><span style="color:red;">*</span></td><td> <input type="text" name="phone" title="Please provide mobile and land number here"  maxlength="10"/></td></tr>
 					<tr><td><font color="black">Email:</font><span style="color:red;">*</span></td><td> <input type="text" name="email" title="Please provide Valid Email here"/></td></tr>
 					<tr><td></td><td><input type="submit" value="Submit"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
 					</table>
                		</form>
+			</td>
+		</tr>
 	
-		
+	</table>
     	   </div>      
     </td>
     
-   <td >
-   
-   	<img src="./images/globe_05.jpg" id="img" width="300px" />	
-   	<button id="btu">Next</button>
-   	<script>
-   		var btu = document.getElementById("btu");
-        var img = document.getElementById("img");
-        var xia = 0;
-        var imgs = ["./images/globe_05.jpg","./images/globe_06.jpg"];
-        btu.addEventListener("click",function (){
-        	 if(xia < 1){
-          xia++;
-        }else{
-          xia = 0;
-        }
-      img.src = imgs[xia];
-  });
-   	</script>
+   <td width="299" valign="top">
+    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>Welcome</h1><br>
+    	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
+		     <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
+		    <br>
+		     <!-- <p> Our banking products are simple and less complicated, and designed to keep your hard-earned money in your pocket. --> 
+		      <p>And we make it easy for you to keep on top of your online banking options.  With the right products and our knowledgeable staff to guide you – we are confident there is no goal too high for you to achieve.</p>
+	    	
+	    </div>      
     </td>
-      </tr>       	
-   </tr> 
-</table>
+             	
+    
+</tr></table>
     
 <div id="footer_top">
   <div id="footer_navigation">
