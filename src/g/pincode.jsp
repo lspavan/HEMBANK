@@ -6,8 +6,24 @@
 
 </head>
 <body>
+<%
+String perNo=request.getParameter("perNo");
+String status="";
+boolean preCheck=false;
+String personalNumber="";
+String persNo="";
 
-
+System.out.println("received is "+perNo);
+SecurityG3 s1=new SecurityG3();
+ persNo=s1.encrypt(perNo,"ssshhhhhhhhhhh!!!!");
+System.out.println("persNo"+persNo);
+try {
+	
+	
+}catch(Exception e){
+	e.printStackTrace();
+}
+%>	
 
 
 
