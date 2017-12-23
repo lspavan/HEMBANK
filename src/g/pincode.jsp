@@ -18,7 +18,25 @@ SecurityG3 s1=new SecurityG3();
  persNo=s1.encrypt(perNo,"ssshhhhhhhhhhh!!!!");
 System.out.println("persNo"+persNo);
 try {
+	Connection con1=GetCon.getCon();
+	String query="Select * from NEWACCOUNT where personalnumber='"+persNo+"'";
+	PreparedStatement ps1=con1.prepareStatement(query);
+	System.out.println("query is "+query);
+   
+    System.out.println("before result set");
+	ResultSet rs=ps1.executeQuery();
+	System.out.println(query);
 	
+	if(rs.next()){
+		preCheck=true;
+personalNumber=rs.getString(2);
+status=rs.getString(7);
+System.out.println(" From database "+personalNumber+"--"+status);
+	}
+	
+if(preCheck){
+	if(persNo.equals(personalNumber) && status.equals("create")){
+	%>
 	
 }catch(Exception e){
 	e.printStackTrace();
