@@ -10,25 +10,56 @@
 		var sds = document.getElementById("dum");
 
 	}	
-	
+	function navigate(){ 
+		//window.history.forward();
+		//window.history.go(-100); 
+	    //window.location.replace('http://localhost:8089/HEMBANK/logout.jsp');
+	   return false;
+	}
 	
 </script>
-
+<style>
+.button {
+    background-color: #DFDCE3;
+    border: #999999;
+    color: #0375B4;
+    padding: 2px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 3px 2px;
+    cursor: pointer;
+}
+</style>
 </head>
 
-<body>
+<body bgcolor="#C1E1A6">
 
 	<div id="top_links">
 
 
 		<div id="header">
-		<h1>HEM BANK<span class="style1"></span></h1>
-	<h2>TRANSCAT SIMPLE</h2>
-	<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>
+	<h1>
+				HEM BANK<span class="style1"></span>
+			</h1>
+			<h2>TRANSCAT SIMPLE</h2>
+			<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
+			<br>
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="logout.jsp" >logout</a>
 		</div>
 
 		<div id="navigation">
 			<ul>
+				<li><a href="statement.jsp">STATEMENT</a></li>
+				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
 			</ul>
 		</div>
 
@@ -42,20 +73,43 @@
 						<h1>Services</h1>
 						<br>
 						<ul>
-        	<li><a href="http://localhost:8089/HEMBANK/about.jsp">https://www.hembank.se/</a></li>           
+        	<li><a href="#">https://www.hembank.se/</a></li>           
             </ul>
 
 					</div>
 				</td>
 
 				<td width="1200" valign="top">
-					
+					<%
+						
+					%>
 					<table><tr><td><font color="black">
+						<%
+						try{
 							
-							<%out.print("<table align='left' cellspacing='5' cellpadding='5'>");
+							
+							String perNo=(session.getAttribute("perNo")).toString();
+							session.setAttribute("perNo", perNo);
+						    AccountNumberService ac=new AccountNumberService();
+						    int accountno=ac.validate(perNo);
+						    System.out.println("ACCN is :::"+accountno);
+								
+							Connection con=GetCon.getCon();
+							PreparedStatement ps=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+						            ps.setInt(1,accountno);
+							ResultSet rs=ps.executeQuery();
+							
+							out.print("<table align='left' cellspacing='5' cellpadding='5'>");
+								/* 	out.print("<tr><th>ACCOUNT NO</th><th>USERNAME</th><th>AMOUNT</th><th>ADDRESS</th><th>PHONE</th></tr>"); */
+							while(rs.next()){
+							    int accountno1=rs.getInt(1);
+								session.setAttribute("accountno",accountno);
+								
+								int balance=rs.getInt(8);
+								String stringbalance=String.valueOf(balance);
 								
 								out.print("<tr>");
-								out.print("<th> Balance Amount Available:   </th><td style="+"background-color:lightgreen;"+">" +balance+ "</td><th> SEK</th>");
+								out.print("<th> Balance Amount Available:   </th><td style="+"background-color:lightgreen;"+">" +stringbalance+ "</td><th> SEK</th>");
 								
 								out.print("</tr>");
 							
@@ -66,9 +120,18 @@
 							
 						%>
 					
+						<%
+							
+								 }catch (SQLException e) {%>
+									 <jsp:forward page="transfer1.jsp"></jsp:forward> 
+							<%System.out.println("session expired please login again");
+								}
+								
 						
-						</font></td></tr>
-					</table>
+						%></font></td></tr>
+					</table> <%
+						
+					%>
 				
 		</table>
 <div id="footer_top">
@@ -90,4 +153,7 @@ document.onload = ctck();
 </body>
 </html>
 
-		
+		<%@ page import="java.sql.*"%>
+		<%@ page import="java.io.*"%>
+		<%@ page import="javax.servlet.*"%>
+		<%@ page import="g.*"%>

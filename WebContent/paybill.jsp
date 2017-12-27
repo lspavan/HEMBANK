@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-
-<html>
-<head>
-
-
-=======
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,27 +12,68 @@ var sds = document.getElementById("dum");
 
 }
 </script>
->>>>>>> cced2f482c07aadd6e53bbbff8876b3c9e5d3d04
 
 </head>
 
 <body>
 
-<<<<<<< HEAD
-<%
+<div id="top_links">
+  
+
+<div id="header">
+<h1>
+				HEM BANK<span class="style1"></span>
+			</h1>
+			<h2>TRANSCAT SIMPLE</h2>
+			<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
+			<br><br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="logout.jsp" >logout</a>
+</div>
+
+<div id="navigation">
+    	<ul>	
+				<li><a href="/HEMBANK/transfer1.jsp">TRANSFER</a></li>
+				<li><a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a></li>
+			</ul>
+</div>
+
+
+
+<table style="width:897px; background:#FFFFFF; margin:0 auto;">
+<tr >
+	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
+    	<div id="services"><h1>Services</h1><br>
+		    <ul>
+        	        	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li></ul>
+			
+       </div>
+	</td>
+    
+    <td width="1200" valign="top">
+    	
+    	<% 
+%>
+<table><%
 
 		String debitemail="";
 		String creditemail="";
     	
-        String num=request.getParameter("accountno");
-		int accountno=Integer.parseInt(num);
-		
-		
-        String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
-		/* String num1=request.getParameter("taccountno");
-		int taccountno=Integer.parseInt(num1); */
+		String perNo=(session.getAttribute("perNo")).toString();
+		session.setAttribute("perNo", perNo);
+	    AccountNumberService ac=new AccountNumberService();
+	    int accountno=ac.validate(perNo);
+        String bankId=request.getParameter("bankId");
 		
 		String biller=request.getParameter("billeraccount");
 		int billeracc=Integer.parseInt(biller);
@@ -49,15 +83,12 @@ var sds = document.getElementById("dum");
 		String amoun=request.getParameter("amount");
 		int accoun=Integer.parseInt(amoun);
 		//accountno=taccountno;
-	    boolean status=verifyLogin1.checkLogin(accountno,username,password);
-		//if(status==true){
-		//	out.print("Welcome    " + username);
+		BankIdService bs=new BankIdService();
+	    boolean status=bs.validate(perNo,bankId);
+
 		try {
 		if(status==true){
-			//out.print("Welcome    " + username);
-		    out.print("       TARGET ACCOUNT NO DOES NOT EXSIT    " );
-		    %>
-			<% 
+			
 			Connection con=GetCon.getCon();
 			PreparedStatement ps=con.prepareStatement("Select * from NEWACCOUNT where accountno='"+billeracc+"'");
 			
@@ -66,11 +97,26 @@ var sds = document.getElementById("dum");
 			int dataamount=0;
 			
 			if(rs.next()){
-			dataamount=accoun+rs.getInt(6); 
-			creditemail=rs.getString(9);
+			dataamount=accoun+rs.getInt(8); 
+			creditemail=rs.getString(6);
 			}
-			Connection con1=GetCon.getCon();
+			String billerName="";
+			if(billeracc==1){
+				billerName="powerbill";
+				
+			}else if(billeracc==2){
+				billerName="telephonebill";
+			}else if(billeracc==3){
+				billerName="waterbill";
+			}else if(billeracc==4){
+				billerName="parkingbill";
+			}else if(billeracc==5){
+				billerName="Tax";
+			}else{
+				
+			}
 			
+			Connection con1=GetCon.getCon();			
 			PreparedStatement ps1=con1.prepareStatement("update NEWACCOUNT set amount=? where accountno='"+billeracc+"'");
 			ps1.setInt(1,dataamount);
 			ps1.executeUpdate();
@@ -88,8 +134,8 @@ var sds = document.getElementById("dum");
 			int dataamount1=0;
 			if(rs2.next()){
 				// dataamount1 is balance after transcation
-			dataamount1=rs2.getInt(6)-accoun; 
-			debitemail=rs2.getString(9);
+			dataamount1=rs2.getInt(8)-accoun; 
+			debitemail=rs2.getString(6);
 			System.out.println(dataamount1);
 			}
 			Connection con3=GetCon.getCon();
@@ -110,7 +156,7 @@ var sds = document.getElementById("dum");
 			    
 					ps4.setString(1, strDate);
 					
-					ps4.setString(2, "Bill Pay");
+					ps4.setString(2, "Bill Pay to "+billerName);
 					ps4.setInt(3, accoun);
 					ps4.setInt(4, 0);
 					System.out.println("deposit is "+accoun);
@@ -160,8 +206,8 @@ var sds = document.getElementById("dum");
 			
 		}
 		else{
-			out.print("Please check your username and Password and target accountno");
-			request.setAttribute("balance","Please check your username and Password and target acountno");
+			out.print("Please check Bank Security");
+			request.setAttribute("balance","Please check Bank Security");
 			%>
 			<jsp:forward page="transfer1.jsp"></jsp:forward> 
 			<% 
@@ -169,73 +215,18 @@ var sds = document.getElementById("dum");
 		 }catch (SQLException e) {
 			e.printStackTrace();
 		}
-			%>
+		
+		
+			%></table><%
+%>
     	
     	
-	</body></html>
+		 </table>
+
+</div></body></html>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date,java.text.*"%>
 <%@ page import="java.io.*" %>
 <%@ page import="javax.servlet.*"%>
 <%@ page import="g.*" %>
    
-=======
-<div id="top_links">
-  
-
-<div id="header">
-<h1>
-				HEM BANK<span class="style1"></span>
-			</h1>
-			<h2>TRANSCAT SIMPLE</h2>
-			<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
-			<br><br><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="logout.jsp" >logout</a>
-</div>
-
-<div id="navigation">
-    	<ul>	<li><a href="balance.jsp">VIEW BALANCE</a></li>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="paybill1.jsp">BILL PAY</a></li>
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
-			</ul>
-</div>
-
-
-
-<table style="width:897px; background:#FFFFFF; margin:0 auto;">
-<tr >
-	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
-    	<div id="services"><h1>Services</h1><br>
-		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
-          
-            </ul>
-			
-       </div>
-	</td>
-    
-    <td width="1200" valign="top">
-    	
-    	
-<table>
-			<jsp:forward page="tbalance.jsp"></jsp:forward> 
-			
-			<jsp:forward page="transfer1.jsp"></jsp:forward> 
-			</table>
-    	
-    	
-		 </table>
-
-</div></body></html>
->>>>>>> cced2f482c07aadd6e53bbbff8876b3c9e5d3d04

@@ -69,13 +69,7 @@
 		<div id="navigation">
 			<ul>
 
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="paybill1.jsp">BILL PAY</a></li>
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>				
-				<li><a href="profile.jsp">PROFILE</a></li>
+				<li><a href="/HEMBANK/profile.jsp">PROFILE</a></li>
 				
 			</ul>
 		</div>
@@ -104,21 +98,17 @@
 						<tr>
 							<td><font color="black"> <%
 						try{
-							Object accno=session.getAttribute("accountno");						
-						    Object usern=session.getAttribute("username");  
-						    Object pwd=session.getAttribute("password");  
-						    	 String Accn=accno.toString();
-						    	 String username=usern.toString();
-						    	 String password=pwd.toString();
-						    	 System.out.println("ACCN is :::"+Accn);
+							String perNo=(session.getAttribute("perNo")).toString();
+							session.setAttribute("perNo", perNo);
+						    AccountNumberService ac=new AccountNumberService();
+						    int accountno=ac.validate(perNo);
+						    session.setAttribute("accountno", accountno);
+						    System.out.println("ACCN is :::"+accountno);
 						    	 int customerId=0;
 						    	 int one=1,two=1,three=1,four=1,five=1;
 						    	 double average=1.1;
 						
 							
-								int accountno=Integer.parseInt(Accn);						        
-								System.out.println("username and password "+username+"--"+password);
-								session.setAttribute("accountno",accno);
 								
 							Connection con=GetCon.getCon();
 							PreparedStatement ps=con.prepareStatement("Select * from ratedcustomer where customerId=?");
@@ -152,7 +142,7 @@
 								 DecimalFormat twoDForm = new DecimalFormat("#.00");
 								
 								%>
-							    Thanks, You have already provided your feed back... <br> <br>
+							    Thanks for your openion... <br> <br>
 							    <table border=1 align=center>							    
 							    <tr><td><span style="color:blue;"> Current Rating is: </span>&nbsp;&nbsp;<b>
 							    
@@ -223,7 +213,7 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright Â© HEM Bank 2015
+				Copyright © HEM Bank 2015
 			</div>
 		</div>
 

@@ -3,8 +3,8 @@
 
 body{
 	margin:0;
-	color:#DFDCE3;
-	background:#96858f;
+	color:#C1E1A6;
+	background:#DFDCE3;
 }
 div, h1, h2, h3, h4, p, form, label, input, textarea, img, span{
 	margin:0; padding:0;
@@ -24,6 +24,45 @@ ul{
 	font-size:0; 
 	line-height:0;
 }
+
+
+
+#mySidenav a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+
+#about {
+    top: 20px;
+    background-color: #4CAF50;
+}
+
+#blog {
+    top: 80px;
+    background-color: #2196F3;
+}
+
+#projects {
+    top: 140px;
+    background-color: #f44336;
+}
+
+#contact {
+    top: 200px;
+    background-color: #555
+}
+
 .more
 {
 font:normal 11px/18px Arial, Helvetica, sans-serif;
@@ -100,7 +139,7 @@ padding:20px 0 0 380px;
 margin:0 auto;
 width:896px;
 height:40px;
-background:#DFDCE3;
+background:#ECF0F1;
 border:1px solid #999999;
 }
 #navigation ul
@@ -219,7 +258,7 @@ padding:10px;
 }
 #welcome
 {
-width:287px;
+width:400px;
 padding:10px;
 }
 #welcome h1
@@ -285,7 +324,7 @@ height:49px;
 }
 #footer_copyright
 {
-color: #00000;
+color: #808B96;
 font: normal 11px/30px Arial, Helvetica, sans-serif;
 margin:0 auto;
 text-align:center;

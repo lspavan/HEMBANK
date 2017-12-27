@@ -39,14 +39,9 @@ var sds = document.getElementById("dum");
 
 <div id="navigation">
     <ul>
-			   	
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>					
-				<li><a href="paybill1.jsp">BILL PAY</a></li>
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
+
+						<li><a href="paybill1.jsp">BILL PAY</a></li>
+						<li><a href="financialdev.jsp">FINCIALDEV</a></li>			   	
     </ul>
 </div>
 
@@ -57,7 +52,12 @@ var sds = document.getElementById("dum");
 	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
+        	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
             
             </ul>
 			
@@ -67,17 +67,22 @@ var sds = document.getElementById("dum");
     <td width="1200" valign="top">
     	
     	<% 
+    	String perNo=(session.getAttribute("perNo")).toString();
+    	session.setAttribute("perNo", perNo);
 %>
 <table><%
     	String debitemail="";
 	    String creditemail="";
-        String num=request.getParameter("accountno");
-		int accountno=Integer.parseInt(num);
+	    boolean targetAcStatus=false;
+	    
+	    
+	    AccountNumberService ac=new AccountNumberService();
+	    int accountno=ac.validate(perNo);
+	 
 		
 		
-        String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
+        
+        String bankId=request.getParameter("bankId");		
 		String num1=request.getParameter("taccountno");
 		int taccountno=Integer.parseInt(num1);
 		
@@ -85,13 +90,21 @@ var sds = document.getElementById("dum");
 		String amoun=request.getParameter("amount");
 		int accoun=Integer.parseInt(amoun);
 		//accountno=taccountno;
-	    boolean status=verifyLogin1.checkLogin(accountno,username,password);
+		System.out.println("Before sending values to Bankid service "+perNo+"--"+bankId);
+		BankIdService bs=new BankIdService();
+	    boolean status=bs.validate(perNo,bankId);
 		//if(status==true){
 		//	out.print("Welcome    " + username);
 		try {
-		if(status==true){
-			out.print("Welcome    " + username);
-		    out.print("       TARGET ACCOUNT NO DOES NOT EXSIT -->    " + taccountno);
+		if(status==false){
+			
+			out.print("Please check Bank Security");
+			request.setAttribute("balance","Please check Bank Security");
+		}else if(taccountno==accountno){
+			out.print("You can't deposit to own account");
+			request.setAttribute("balance","You can't deposit to own account");
+		}else if(status==true && taccountno!=accountno){
+			
 		    %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href='index.html'><IMG SRC='images/home1.gif'></IMG></A>
 			<% 
 			Connection con=GetCon.getCon();
@@ -103,9 +116,10 @@ var sds = document.getElementById("dum");
 			int dataamount=0;
 			
 			if(rs.next()){
-			dataamount=accoun+rs.getInt(6); 
-			creditemail=rs.getString(9);
-			
+				targetAcStatus=true;
+			dataamount=accoun+rs.getInt(8); 
+			creditemail=rs.getString(6);
+			System.out.println("credit email is "+creditemail);
 			}
 			Connection con1=GetCon.getCon();
 			
@@ -127,9 +141,10 @@ var sds = document.getElementById("dum");
 			int dataamount1=0;
 			if(rs2.next()){
 				// dataamount1 is balance after transcation
-			dataamount1=rs2.getInt(6)-accoun; 
-			debitemail=rs2.getString(9);
+			dataamount1=rs2.getInt(8)-accoun; 
+			debitemail=rs2.getString(6);
 			System.out.println("current account number balance after debit"+dataamount1);
+			System.out.println("debit email is "+debitemail);
 			}
 			Connection con3=GetCon.getCon();
 			
@@ -195,44 +210,11 @@ var sds = document.getElementById("dum");
 			<% 
 		
 			}
-			//out.print("your balance has increase");
-			//request.setAttribute("totaldataamount",dataamount);
-			//request.setAttribute("balance","your balance has decrease");	
-		
-			//}
 			
-			//out.print("your balance has increase");
-			//request.setAttribute("totaldataamount",dataamount);
-			//request.setAttribute("balance","your balance has increase");	
-			//}
-		
-			/*out.print("<table align='left' width='50%' border='4' bgcolor='###FFF'>");
-			out.print("<tr><th>ACCOUNT NO</th><th>USERNAME</th><th>AMOUNT</th><th>ADDRESS</th><th>PHONE</th></tr>");
-			while(rs.next()){
-			    int accountno1=rs.getInt(1);
-				session.setAttribute("accountno",accountno1);
-				
-				System.out.print(accountno);
-				
-				out.print("<tr>");
-				out.print("<td>" + rs.getInt(1) + "</td>");
-				out.print("<td>" + rs.getString(2) + "</td>");
-				out.print("<td>" + rs.getInt(5) + "</td>");
-				out.print("<td>" + rs.getString(6) + "</td>");
-				out.print("<td>" + rs.getInt(7) + "</td>");
-				//out.print("<td><a href='DeleteServlet' >Delete</a></td>");
-			
-				out.print("</tr>");
-			
-			}
-			out.print("</table>");
-			
-			
-			*/
 		}
 		else{
 			out.print("Please check your username and Password and target accountno");
-			request.setAttribute("balance","Please check your username and Password and target acountno");
+			request.setAttribute("balance","Please check target acountno");
 			%>
 			<jsp:forward page="transfer1.jsp"></jsp:forward> 
 			<% 
@@ -257,7 +239,7 @@ var sds = document.getElementById("dum");
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright Â© HEM Bank 2015
+				Copyright © HEM Bank 2015
 			</div>
 		</div>
 
@@ -270,3 +252,4 @@ var sds = document.getElementById("dum");
 
 
    
+s

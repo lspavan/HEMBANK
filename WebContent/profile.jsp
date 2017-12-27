@@ -7,7 +7,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function ctck() {
-		var sds = document.getElementById("dum");
+		
 
 	}
 
@@ -46,11 +46,29 @@ function dil(form)
 		}
   	
   	   }            
-
+function navigate(){   
+	window.history.forward();
+	window.history.go(-100);
+    window.location.replace('http://localhost:8089/HEMBANK/');
+   return false;
+}
   	   
   	   
 </SCRIPT>
-
+<style>
+.button {
+    background-color: #DFDCE3;
+    border: #999999;
+    color: #0375B4;
+    padding: 2px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 3px 2px;
+    cursor: pointer;
+}
+</style>
 </head>
 
 <body>
@@ -61,11 +79,22 @@ function dil(form)
 		<div id="header">
 		<h1>HEM BANK<span class="style1"></span></h1>
 <h2>TRANSCAT SIMPLE</h2>
-<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>			
+<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>
+			<br><br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="logout.jsp" >logout</a>
 		</div>
 
 		<div id="navigation">
 			<ul>
+				
+				<li><a href="userrating.jsp">USER RATING</a></li>
+				
 				
 			</ul>
 		</div>
@@ -87,26 +116,52 @@ function dil(form)
 				</td>
 
 				<td width="1200" valign="top">
-					
+					<%
+						
+					%>
+					<table><tr><td><font color="black">
+						<%
+						try{
+							String perNo=(session.getAttribute("perNo")).toString();
+						session.setAttribute("perNo", perNo);
+					    AccountNumberService ac=new AccountNumberService();
+					    int accountno=ac.validate(perNo);
+					    session.setAttribute("accountno", accountno);
+					    System.out.println("ACCN is :::"+accountno);
+								
+							Connection con=GetCon.getCon();
+							PreparedStatement ps=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+						            ps.setInt(1,accountno);
+							ResultSet rs=ps.executeQuery();
+							
+							out.print("<table align='left' cellspacing='5' cellpadding='5'>");
+								
+							while(rs.next()){
+							    int accountno1=rs.getInt(1);
+								session.setAttribute("accountno",accountno);
+								//String fulName=rs.getString(2);
+								String userName=rs.getString(3);
+								String emailSave=rs.getString(6);
+								int balance=rs.getInt(8);
+								String stringbalance=String.valueOf(balance);%>
 								
 							<form name=F1 onSubmit="return dil(this)" action="profileUpdate.jsp" >
 								
 								<table>
 								<tr><td><b>Profile Details</b> </td></tr>
-								<tr><td>Full Name:</td> <td></td></tr>
-								<tr><td>User Id:</td> <td></td></tr>
-								<tr><td>Address:</td> <td></td></tr>
-								<tr><td>Phone:</td> <td></td></tr>
+								
+								<tr><td>Full Name:</td> <td><%out.print(rs.getString(3)); %></td></tr>
+								<tr><td>Address:</td> <td><%out.print(rs.getString(4)); %></td></tr>
+								<tr><td>Phone:</td> <td><%out.print(rs.getInt(5)); %></td></tr>
 								<tr><td>New Phone</td><td><input type="text" name="phone"></td></tr>
-								<tr><td>Email:</td> <td></td></tr>
+								<tr><td>Email:</td> <td><%out.print(rs.getString(6)); %></td></tr>
 								<tr><td>New Email</td><td><input type="text" name="email"/></td></tr>
 								
 								<tr><td></td><td><input type="submit" value=" save "></td></tr>
 								</table>
 								</form>
 								<% out.print("<tr>");
-								
-								
+																
 								out.print("</tr>");
 							
 							}
@@ -116,8 +171,20 @@ function dil(form)
 							
 						%>
 					
-						</font></td></tr>
-					</table> 
+						<%
+							
+								 }catch (SQLException e) {
+							e.printStackTrace();
+							System.out.println("session expired please login again");
+								}
+								
+								//}
+								
+							//}
+						%></font></td></tr>
+					</table> <%
+						
+					%>
 				
 		</table>
 <div id="footer_top">
@@ -139,4 +206,7 @@ document.onload = ctck();
 </body>
 </html>
 
-		
+		<%@ page import="java.sql.*"%>
+		<%@ page import="java.io.*"%>
+		<%@ page import="javax.servlet.*"%>
+		<%@ page import="g.*"%>

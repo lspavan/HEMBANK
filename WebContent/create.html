@@ -56,7 +56,8 @@ function dil(form)
 	   }
 	
 	
-
+	
+ 
     
     
 	if(!isNaN(document.F1.phone.value))
@@ -96,7 +97,14 @@ function dil(form)
 	   return false;
    }
    
-  
+   /* if(document.F1.password.value!=document.F1.repassword.value)
+   {
+	   alert("Check Confirm PWD"); 
+	   document.F1.repassword.value="";
+	   document.F1.repassword.focus();	
+	   return false;
+	} */
+
  
 
    
@@ -196,7 +204,7 @@ var sds = document.getElementById("dum");
   
  	<div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>	  
-</div>
+  Copyright © HEM Bank 2015</div>
 		</div>
 
 <script type="text/javascript">

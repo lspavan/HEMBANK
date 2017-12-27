@@ -1,7 +1,7 @@
 <html>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>HEM Banking ..</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
@@ -22,6 +22,7 @@ function navigate() {
 </head>
 
 <body>
+
 <div id="top_links">
   
 
@@ -70,25 +71,14 @@ function navigate() {
     
     <td width="1200" valign="top">
     	
-    	
+    	<% 
+%>
 <table border="2" align="center" width="60%" height="60%" bgcolor="white">
 		<tr>
 			<td align="center" valign="middle" bgcolor="red"><h4>Accounts Info</h4></td>
 		</tr>
 		<tr>
 			<td>
-			
-			</td>
-		</tr>
-	
-
-
-    		</table>
-    	
-    	
-		 </table>
-</div>
-
 			<%
 			{
 			out.print("the target account balance is");
@@ -98,6 +88,22 @@ function navigate() {
 				}
 			
 			 %>
-			</body>
+			</td>
+		</tr>
+	
+
+
+    		</table><%
+%>
+    	
+    	
+		 </table>
+
+
+ 
+
+
+
+</div></body>
 	
 </html>

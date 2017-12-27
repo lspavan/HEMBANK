@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -85,7 +88,11 @@
 		</div>
 
 		<div id="navigation">
-			<ul></ul>
+			<ul>
+			<li><a href="/HEMBANK/create.html">REGISTRATION</a></li>					
+					<li><a href="/HEMBANK/deposit1.jsp">DEPOSIT</a></li>
+			
+			</ul>
 		</div>
 
 
@@ -105,7 +112,7 @@
 				</td>
 
 				<td width="1200" valign="top">
-					<div id="welcome" style="border-right: #666666 1px dotted;">
+					<div id="welcome" style="border-right: #666666 1px ;">
 						<h1>DEPOSIT FORM</h1>
 						<br>
 						<table align="center" bgcolor="white">
@@ -114,7 +121,11 @@
 							</tr>
 							<tr>
 								<td><div>
-										
+										<%
+											if (request.getAttribute("balance") != null) {
+												out.print(request.getAttribute("balance"));
+											}
+										%>
 									</div>
 									<form name=F1 onSubmit="return dil(this)" action="deposit.jsp">
 										<table cellspacing="5" cellpadding="3">
@@ -141,26 +152,7 @@
 					</div>
 				</td>
 
-				<td width="299" valign="top">
-					<div id="welcome" style="border-right: #666666 1px dotted;">
-						<h1>Welcome</h1>
-						<br>
-						<center>
-							<img src="images/globe_10.gif" alt="business" width="196"
-								height="106">
-						</center>
-						<br>
-						<p>At HEM Bank we want to help our customers do well. That¡¯s
-							why we try to make it easy for you to succeed.</p>
-						<br>
-						<!-- <p> Our banking products are simple and less complicated, and designed to keep your hard-earned money in your pocket. -->
-						<p>And we make it easy for you to keep on top of your online
-							banking options. With the right products and our knowledgeable
-							staff to guide you ¨C we are confident there is no goal too high
-							for you to achieve.</p>
-
-					</div>
-				</td>
+			
 
 
 			</tr>
@@ -171,7 +163,7 @@
 			<div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright ? HEM Bank 2015</div>
+  Copyright Â© HEM Bank 2015</div>
 </div>
 		</div>
 

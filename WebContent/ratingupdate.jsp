@@ -7,6 +7,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function ctck() {
+		
 		var sds = document.getElementById("dum");
 
 	}
@@ -45,7 +46,7 @@
 
 		<div id="navigation">
 			<ul>
-		
+		<li><a href="userrating.jsp">USER RATING</a></li>
 			</ul>
 		</div>
 
@@ -137,7 +138,7 @@
   <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
 	  
-  Copyright Â© HEM Bank 2015</div>
+  Copyright © HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">

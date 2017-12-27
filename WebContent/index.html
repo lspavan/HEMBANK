@@ -12,7 +12,7 @@ var sds = document.getElementById("dum");
 }
 
 function navigate(){   
-    window.location.replace('http://localhost:8089/HEMBANK/');
+	window.location.replace('http://localhost:8089/HEMBANK/logout.jsp');
    return false;
 }
 </script>
@@ -28,6 +28,16 @@ function navigate(){
     font-size: 11px;
     margin: 3px 2px;
     cursor: pointer;
+}
+
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }
 </style>
 </head>
@@ -47,17 +57,19 @@ function navigate(){
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button class="button" onclick="navigate()">  logout  </button>
+			<a href="logout.jsp" >logout</a>
 </div>
 
+<br>
 <div id="navigation">
-    	<ul>
-				
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>
-			<li><a href="profile.jsp">PROFILE</a></li>
-				
-			</ul>
-</div>
+    	<ul>		<li><a href="/HEMBANK/balance.jsp">GET FUNDS</a></li>
+					<li><a href="/HEMBANK/managefunds.jsp">MANAGE FUNDS</a></li>
+					<li><a href="/HEMBANK/userrelated.jsp">USER RELATED</a></li>	
+					<li><a href="/HEMBANK/about.jsp">ABOUT US</a></li>
+			</ul></div>
+
+
+
 
 <table cellpadding="0" cellspacing="0" id="content1"><tr align="justify">
 	<td class="con" valign="top">
@@ -83,14 +95,23 @@ function navigate(){
 	<td width="299" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        <li><a href="#">https://www.hembank.se/</a></li>           
+		    
+		    
+<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
+
+	          
             </ul>
 			
        </div>
 	</td>
     
     <td width="299" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>Welcome</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px ;"><h1>Welcome</h1><br>
     	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
 		    <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
 		    <br>
@@ -99,19 +120,7 @@ function navigate(){
 	    	
 	    </div>      
     </td>
-    
-    <td width="299" valign="top">
-   	  <div id="news"><h1>News &amp; Events</h1><br>
-      	<div class="img"><img src="images/globe_12.gif" alt="Business"></div>
-        <h2>Nov. 10, 2017.</h2>
-        <p>HEM Bank have a network of about 24,000 branches and more than 1 million customers of which there are six thousand savings accounts.</p><br>
-        <div class="img"><img src="images/globe_16.gif" alt="Business"></div>
-        <h2>Nov. 12, 2017.</h2>
-        <p>The key Federal Reserve funds interest rate has risen from a low of range of around 0.1 percent in late 2016 to a rate approaching 1.2 percent after the most recent interest rate increase in September.</p>
-      
-      </div>
-        	
-     </td>
+ 
 </tr></table>
 
 <div id="footer_top">

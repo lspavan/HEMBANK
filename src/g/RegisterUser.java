@@ -6,7 +6,7 @@ public class RegisterUser {
 static int status=0;
 //int accountno=1;
 public static int register(String personalnumber,String fullname,String address,double phone,String email,String statu){
-	
+	//public static int register(String email,String password,String gender,String country,String name){
 
 	Connection con=GetCon.getCon();
 	PreparedStatement ps;

@@ -50,19 +50,47 @@
 
 		<div id="navigation">
 			<ul>
-						<li><a href="balance.jsp">VIEW BALANCE</a></li>
-						<li><a href="statement.jsp">STATEMENT</a></li>
-						<li><a href="emailstatement.jsp">ESTATMENT</a></li>
 						<li><a href="transfer1.jsp">TRANSFER</a></li>
-						<li><a href="paybill1.jsp">BILL PAY</a></li>
-						
-						<li><a href="userrating.jsp">USER RATING</a></li>
-						<li><a href="profile.jsp">PROFILE</a></li>
+						<li><a href="paybill1.jsp">BILL PAY</a></li>						
 			</ul>
 		</div>
 		
 		
+		<%
+    	 
+		String stringbalance="";
+		int balance=0;
+
+try {
+	String perNo=(session.getAttribute("perNo")).toString();
+	
+    AccountNumberService ac=new AccountNumberService();
+    int accountno=ac.validate(perNo);						        
+	
+	  			
 		
+	Connection con=GetCon.getCon();
+	PreparedStatement ps=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+            ps.setInt(1,accountno);
+	ResultSet rs=ps.executeQuery();
+	
+
+		
+	while(rs.next()){
+	    int accountno1=rs.getInt(1);
+		session.setAttribute("accountno",accountno);
+		
+		balance=rs.getInt(8);
+		stringbalance=String.valueOf(balance);
+	}
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+   
+			%>
+    	 
     	 
 		
 
@@ -120,8 +148,8 @@
 					</div>
 				</td>
 
-
-				
+<%-- 
+				<%if (balance>=10000){ %>
 				<td width="299" valign="top">
 					<div id="welcome" style="border-right: #666666 1px dotted;">
 						<h1>STOCK EXCHANGE</h1>
@@ -138,7 +166,7 @@
 
 					</div>
 				</td>
-			
+			<%}else{ %>
 				<td width="299" valign="top">
 					<div id="welcome" style="border-right: #666666 1px dotted;">
 						<h1>Welcome</h1>
@@ -159,7 +187,7 @@
 
 					</div>
 				</td>
-			
+				<%} %> --%>
 
 
 				<td width="299" valign="top">
@@ -188,7 +216,7 @@
 
  <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>	  
- </div>
+  Copyright Â© HEM Bank 2015</div>
 		</div>
 
 		<script type="text/javascript">
@@ -198,4 +226,7 @@ document.onload = ctck();
 
 </body>
 </html>
-		
+		<%@ page import="java.sql.*"%>
+		<%@ page import="java.io.*"%>
+		<%@ page import="javax.servlet.*"%>
+		<%@ page import="g.*"%>

@@ -60,6 +60,11 @@ function ctck()
 var sds = document.getElementById("dum");
 
 }
+
+function noSubmit(){
+
+	return false;
+}
 </script>
 
 </head>
@@ -67,7 +72,43 @@ var sds = document.getElementById("dum");
 <body>
 
 
+<%
+String perNo=request.getParameter("perNo");
+request.setAttribute("perNo", perNo);
+String status="";
+boolean preCheck=false;
+String personalNumber="";
+String persNo="";
 
+System.out.println("received is "+perNo);
+SecurityG3 s1=new SecurityG3();
+ persNo=s1.encrypt(perNo,"ssshhhhhhhhhhh!!!!");
+System.out.println("persNo"+persNo);
+try {
+
+
+
+	Connection con1=GetCon.getCon();
+	String query="Select * from NEWACCOUNT where personalnumber='"+persNo+"'";
+	PreparedStatement ps1=con1.prepareStatement(query);
+	System.out.println("query is "+query);
+   
+    System.out.println("before result set");
+	ResultSet rs=ps1.executeQuery();
+	System.out.println(query);
+	
+	if(rs.next()){
+		preCheck=true;
+personalNumber=rs.getString(2);
+status=rs.getString(7);
+System.out.println(" From database "+personalNumber+"--"+status);
+	}
+	
+if(preCheck){
+	if(persNo.equals(personalNumber) && status.equals("create")){
+	
+	%>
+		
 	
 
 
@@ -78,9 +119,8 @@ var sds = document.getElementById("dum");
 
 <div id="header">
 	<h1>HEM BANK<span class="style1"></span></h1>
-			<h2>TRANSCAT SIMPLE</h2>	
-
-</div>
+			<h2>TRANSCAT SIMPLE</h2>
+</div> <br>
 
 
 <table style="width:897px; background:#FFFFFF; margin:0 auto;">
@@ -94,17 +134,22 @@ var sds = document.getElementById("dum");
 		
 		</tr>
 		<tr>
-			<td><div></div>
-				<form id="1">
+			<td><div><%if(request.getAttribute("balance")!=null)
+			{
+			out.print(request.getAttribute("balance"));
+			}
+			
+			 %></div>
+				<form id="1" action="activateupdate.jsp">
 				   <table cellspacing="5" cellpadding="3">	
 				  <tr><td> 
 				  
 			
 			<div data-role="controlgroup" data-type="horizontal">
 				<input type="text" id="numpadButton" data-wrapper-class="controlgroup-textinput ui-btn" value="0" maxlength="4" name="pincode" >
-				<button id="numpadButton-btn" class="ui-btn ui-icon-grid ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" formnovalidate>&nbsp;</button>
+				<button id="numpadButton-btn" class="ui-btn ui-icon-grid ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" onclick="noSubmit();return false;">&nbsp;</button>
 			</div>
-        
+        			<input type="hidden" name="hiddenperNo" value="<%=perNo%>"/>
 				  </td> <td align="cener"><input type="submit" value="Go"/></td> </tr>
 							
 								
@@ -119,7 +164,7 @@ var sds = document.getElementById("dum");
     </td>
     
     <td width="299" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>Welcome</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px;"><h1>Welcome</h1><br>
     	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
 		    <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
 		    <br>
@@ -151,7 +196,32 @@ document.onload = ctck();
 </div>
 
 
+<!-- Saving the active with newaccount -->
+							<%Connection cona=GetCon.getCon();
+							PreparedStatement psa=cona.prepareStatement("update  NEWACCOUNT set status='active' where personalnumber='"+personalNumber+"'");						            
+							ResultSet rsa=psa.executeQuery();							
+							%>
+<!-- End of newaccount update -->
 
+
+
+
+<%}else if(status.equals("active")){
+		out.print("Your Account activated already.. please login using PIN code or contact branch to reset your PIN code");
+		    		request.setAttribute("balance","Your Account activated already..");%>
+		    		<jsp:forward page="activate.jsp"></jsp:forward> 
+	<%}else{
+		out.print("You Dont have account created in our branch..");
+	}
+}
+}catch(Exception e){
+	e.printStackTrace();
+}
+%>
 
 </body>
 </html>
+<%@ page import="java.sql.*"%>
+		<%@ page import="java.io.*"%>
+		<%@ page import="javax.servlet.*"%>
+		<%@ page import="g.*"%>

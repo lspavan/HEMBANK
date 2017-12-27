@@ -68,13 +68,10 @@ function navigate() {
 
 		<div id="navigation">
 			<ul>
-				<li><a href="balance.jsp">VIEW BALANCE</a></li>				
+							
 				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="paybill1.jsp">BILL PAY</a></li>
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
+				
+
 			</ul>
 		</div>
 
@@ -86,24 +83,22 @@ function navigate() {
 
 				<td width="1200" valign="top">
 					<% 
-%> <!-- checking the passed values --> <%Object accno=session.getAttribute("accountno");
-    	
-    	/* out.println("object value is :::"+accno.toString());
-    	 out.println("value is "+session.getAttribute("accountno")); */
-    	 
-    	 String Accn=accno.toString();
-    	 System.out.println("ACCN is :::"+Accn);
+%> <!-- checking the passed values --> <%
+
+
+String perNo=(session.getAttribute("perNo")).toString();
+session.setAttribute("perNo", perNo);
+AccountNumberService ac=new AccountNumberService();
+int accountno=ac.validate(perNo);
+System.out.println("ACCN is :::"+accountno);
     	 
     	 %>
-
-
-
 					<table>
 						<%
 
 try {
 		    Connection con1=GetCon.getCon();			
-			PreparedStatement ps1=con1.prepareStatement("Select * from TRANSCATIONS WHERE accountno= "+accno.toString() +" order by TRANSCATDATE desc");
+			PreparedStatement ps1=con1.prepareStatement("Select * from TRANSCATIONS WHERE accountno= "+accountno +" order by TRANSCATDATE desc");
 			//PreparedStatement ps1=con1.prepareStatement("Select accountno from NEWACCOUNT where accountno='"+passedaccountno+"'");
           
             ResultSet rs1=ps1.executeQuery();
@@ -158,7 +153,7 @@ try {
 
 <br><br>
 		<jsp:include page="pi.jsp" flush="true">
-			<jsp:param name="accno" value="${Accn}" /> 
+			<jsp:param name="accno" value="${accountno}" /> 
   
 			</jsp:include>
 <div id="footer_top">
@@ -169,7 +164,8 @@ try {
   
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
-</div>
+	  
+  Copyright © HEM Bank 2015</div>
 </div>
 
 <script type="text/javascript">
@@ -177,3 +173,5 @@ document.onload = ctck();
 </script>
 </div>
 </body></html>
+
+			

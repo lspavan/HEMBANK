@@ -28,7 +28,7 @@ public class CreateServlet extends HttpServlet {
 		int status=-1;
 		String personalnumber=request.getParameter("personalnumber");
 		String fullname=request.getParameter("fullname");
-	
+		
 		String adderess=request.getParameter("adderess");
 		
 		String ph=request.getParameter("phone");

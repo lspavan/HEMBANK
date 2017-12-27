@@ -6,9 +6,10 @@ import javax.mail.internet.*;
 
 public class Main {
 
-    public  String USER_NAME = "hem.banking";  
-    public  String PASSWORD = ""; 
-   
+    public  String USER_NAME = "hem.banking";  // GMail user name (just the part before "@gmail.com")
+    public  String PASSWORD = "G@ecis22a"; // GMail password
+    //public  String RECIPIENT = "pavan.lakshmisetty@gmail.com";
+
     
     public  void sendFromGMail(String subject, String body,String recipent) {
         Properties props = System.getProperties();

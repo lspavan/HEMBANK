@@ -91,7 +91,8 @@ var sds = document.getElementById("dum");
 </head>
 
 <body>
-
+<%String perNo=session.getAttribute("perNo").toString();
+session.setAttribute("perNo", perNo); %>
 <div id="top_links">
   
 
@@ -114,55 +115,58 @@ var sds = document.getElementById("dum");
 
 <div id="navigation">
     <ul>
-    			<li><a href="balance.jsp">VIEW BALANCE</a></li>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
 				<li><a href="transfer1.jsp">TRANSFER</a></li>				
 				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
+				
 </ul>
 </div>
 
 
 
-<table style="width:800px; background:#FFFFFF; margin:0 auto;">
+<table style="width:897px; background:#FFFFFF; margin:0 auto;">
 <tr >
-	<td width="100" valign="top" style="border-right:#666666 1px dotted;">
+	<td width="550px" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
+        	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
 
             </ul>
 			
        </div>
 	</td>
     
-    <td width="450" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>TRANSFER FORM</h1><br>
+    <td width="650px" valign="top">
+    	<div id="welcome" style="border-right:#666666 1px;"><h1>TRANSFER FORM</h1><br>
     	    <table align="center" bgcolor="white">
 		<tr>
 			
 		</tr>
 		<tr>
-			<td><div></div>
+			<td><div>
 				<form name=F1 onSubmit="return dil(this)" action="paybill.jsp" >
 				    <table cellspacing="5" cellpadding="3">
-				    <tr><td><font color="black">ACCOUNT NO:</font></td><td><font color="black"> <input type="text" name="accountno"/></font></td></tr>
-					<tr><td><font color="black">USER NAME:</font></td><td><font color="black"> <input type="text" name="username"/></font></td></tr>
-					<tr><td><font color="black">PASSWORD:</font></td><td><font color="black"> <input type="password" name="password"/></font></td></tr>
-					<tr><td><font color="black">BILLER:<select name="billeraccount">
+												<tr>
+												<td><font color="black">SECURITY ID:</font></td>
+												<td><font color="black"><input type="text" name="bankId" /></font></td>
+											</tr>
+<tr>
+<td><font color="black">BILLER:</font></td>
+<td><select name="billeraccount">
   <option value=1>POWER BILL</option>
   <option value=2>TELEPHONE</option>
   <option value=3>WATER</option>
   <option value=4>PARKING</option>
   <option value=5>TAX</option>
-</select></font></td></tr>
+</select></td></tr>
 					
 					<tr><td><font color="black">AMOUNT:</font></td><td><font color="black"> <input type="text" name="amount"/></font></td></tr>
 					
-					<tr><td></td><td><input type="submit" value=" SUBMIT "/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<INPUT TYPE=RESET VALUE=" CLEAR "></td></tr>
+					<tr><td></td><td><input type="submit" value=" SUBMIT "/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
 					</table>
 		    		</form>
 			</td>
@@ -170,14 +174,7 @@ var sds = document.getElementById("dum");
 	</table>
     	   </div>      
     </td>
-    
-   <td width="250" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>Welcome</h1><br>
-    	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
-		    <p>Each people plan their site layouts depending upon their business type. Here comes a free designer template which provides you with a selection of different kinds of webdesign   starting from business template, fashion template, media template, Science template, Arts template and much more.</p>
-	    	
-	    </div>      
-    </td>
+   
              	
     
 </tr></table>
@@ -192,6 +189,8 @@ var sds = document.getElementById("dum");
 				<p>HEM Bank is the global source of information about and access
 					to financial services provided by the HEM group family of
 					companies.</p>
+
+				Copyright © HEM Bank 2015
 			</div>
 
 <script type="text/javascript">

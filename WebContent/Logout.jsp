@@ -14,7 +14,10 @@
 function ctck()
 {
 var sds = document.getElementById("dum");
-window.location="logouturl";
+window.history.forward();
+window.history.go(-100);
+//location.replace(logouturl);
+window.location="http://localhost:8089/HEMBANK/login.jsp";
 }
 
 
@@ -26,11 +29,22 @@ window.location="logouturl";
 <body>
 
 <script type="text/javascript">
-document.onload = ctck();
+//document.onload = ctck();
 </script>
 <%
 
-   response.sendRedirect("../HEMBANK/mainindex.html");%>
+request.getSession().invalidate();
+ //response.sendRedirect(request.getContextPath()+"login.jsp");
+ 
+// out.print("You Have been logged out....");%>
+ 
+ <script>
+alert("You have been logged out. Thanks for visiting HEM BANK");
+ window.close();
+ </script>
+ 
+
+ 
 
 </body>
 </html>

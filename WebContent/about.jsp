@@ -9,10 +9,8 @@
 
 </head>
 
-<body bgcolor="#5DADE2">
-
-<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-              </TABLE>
+<body bgcolor="#DFDCE3">
+<A href="index.html"><IMG SRC="images/home1.gif"></IMG></A> <br>
           
                            
                   <table width="100%"  border="0" cellspacing="10" cellpadding="0">
@@ -30,7 +28,7 @@
                               The BANK upholds the founders' commitment to excellence in all fields, with emphasis on its motto Service Before Self.<br>
                                 </p>
                               <p align="justify" class="bodytextheading" style="color:blue;font-size:20px;">BANK Profile</p>
-                              <p align="justify"> HEM-BANK, is Sweden's largest private sector bank with total consolidated assets of Rs. 9,860.43 billion (SEK 152.0 billion) at March 31, 2017 and profit after tax of Rs. 98.01 billion (SEK 1.5 billion) for the year ended March 31, 2017. ICICI Bank currently has a network of 4,850 Branches and 5000 ATM's across Sweden.</p>
+                              <p align="justify"> HEM-BANK, is Sweden's largest private sector bank with total consolidated assets of Rs. 9,860.43 billion (SEK 152.0 billion) at March 31, 2017 and profit after tax of Rs. 98.01 billion (SEK 1.5 billion) for the year ended March 31, 2017. HEM Bank currently has a network of 4,850 Branches and 5000 ATM's across Sweden.</p>
                             
                               <p align="justify" class="bodytextheading" style="color:blue;font-size:20px;"> Our Mission</p>
                               <p align="justify">While we're a global bank, our mission is simple: We responsibly provide financial services that enable growth and economic progress.</p>
@@ -43,9 +41,9 @@
                   </table>
                            
          <div id="footer_copyright" align="center">
-		    <p style="color:yellow;font-size:15px;">HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.<br>
+		    <p font-size:15px;">HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.<br>
 	  
-  Copyright © HEM Bank 2017</p></div>
+  Copyright © HEM Bank 2015</p></div>
 	
 </body>
 <!-- InstanceEnd --></html>

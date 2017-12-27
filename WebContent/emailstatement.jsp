@@ -85,11 +85,7 @@
 
 				<li><a href="balance.jsp">VIEW BALANCE</a></li>
 				<li><a href="statement.jsp">STATEMENT</a></li>				
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="paybill1.jsp">BILL PAY</a></li>
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
+				
 				
 			</ul>
 		</div>
@@ -118,22 +114,19 @@
 						<tr>
 							<td><font color="black"> <%
 						try{
-							Object accno=session.getAttribute("accountno");						
-						    Object usern=session.getAttribute("username");  
-						    Object pwd=session.getAttribute("password");  
-						    	 String Accn=accno.toString();
-						    	 String username=usern.toString();
-						    	 String password=pwd.toString();
-						    	 System.out.println("ACCN is :::"+Accn);
+									String perNo=(session.getAttribute("perNo")).toString();
+									session.setAttribute("perNo", perNo);
+								    AccountNumberService ac=new AccountNumberService();
+								    int accountno=ac.validate(perNo);
+								    session.setAttribute("accountno", accountno);
+								    System.out.println("ACCN is :::"+accountno);
+						    	 
+						    	 
+						    	 
 						    	 int customerId=0;
 						    	 int one=1,two=1,three=1,four=1,five=1;
 						    	 double average=1.1;
 						
-							
-								int accountno=Integer.parseInt(Accn);						        
-								System.out.println("username and password "+username+"--"+password);
-								session.setAttribute("accountno",accno);
-								
 							Connection con=GetCon.getCon();
 							PreparedStatement ps=con.prepareStatement("Select * from ratedcustomer where customerId=?");
 						            ps.setInt(1,accountno);
@@ -214,7 +207,7 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright Â© HEM Bank 2015
+				Copyright © HEM Bank 2015
 			</div>
 		</div>
 

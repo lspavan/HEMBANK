@@ -5,6 +5,9 @@
 <html>
 <head>
 <SCRIPT LANGUAGE="JavaScript">
+
+
+
 	function dil(form) {
 		for (var i = 0; i < form.elements.length; i++) {
 			if (form.elements[i].value == "") {
@@ -42,7 +45,7 @@
 			return false
 		}
 		if (document.F1.accountno.value == document.F1.taccountno.value) {
-			alert("Change target accountno");
+			alert("You can not transfer money online to your own account..");
 			document.F1.taccountno.value = ""
 			document.F1.taccountno.focus()
 			return false
@@ -71,7 +74,7 @@
 
 </head>
 
-<body>
+<body onload="if (location.href.indexOf('reload')==-1) location.replace(location.href+'?reload')">
 
 	<div id="top_links">
 
@@ -93,36 +96,37 @@
 		</div>
 
 		<div id="navigation">
-			<ul>
-						<li><a href="balance.jsp">VIEW BALANCE</a></li>
-						<li><a href="statement.jsp">STATEMENT</a></li>
-						<li><a href="emailstatement.jsp">ESTATMENT</a></li>						
+			<ul>							
 						<li><a href="paybill1.jsp">BILL PAY</a></li>
-						<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-						<li><a href="userrating.jsp">USER RATING</a></li>
-						<li><a href="profile.jsp">PROFILE</a></li>
+						<li><a href="financialdev.jsp">FINCIALDEV</a></li>					
+						
 			</ul>
 		</div>
 
 
 
-		<table style="width: 800px; background: #FFFFFF; margin: 0 auto;">
+		<table style="width: 897px; background: #FFFFFF; margin: 0 auto;">
 			<tr>
-				<td width="100" valign="top"
+				<td width="550px" valign="top"
 					style="border-right: #666666 1px dotted;">
 					<div id="services">
 						<h1>Services</h1>
 						<br>
 						<ul>
-							<li><a href="#">www.hembank.se</a></li>
+							<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
 
 						</ul>
 
 					</div>
 				</td>
 
-				<td width="450" valign="top">
-					<div id="welcome" style="border-right: #666666 1px dotted;">
+				<td width="650px" valign="top">
+					<div id="welcome" style="border-right: #666666 1px ;">
 						<h1>TRANSFER FORM</h1>
 						<br>
 						<table align="center" bgcolor="white">
@@ -132,25 +136,24 @@
 							<tr>
 								<td><div>
 										<%
-											if (request.getAttribute("balance") != null) {
-												out.print(request.getAttribute("balance"));
+											if (request.getAttribute("balance") != null) {%>
+												<span style="color:blue"><% out.print(request.getAttribute("balance"));
 											}
-										%>
+										
+										String perNo=session.getAttribute("perNo").toString();
+										session.setAttribute("perNo", perNo);
+										
+										%></span>
 									</div>
 									<form name=F1 onSubmit="return dil(this)" action="transfer.jsp">
+									
 										<table cellspacing="5" cellpadding="3">
+										
 											<tr>
-												<td><font color="black">ACCOUNT NO:</font></td>
-												<td><font color="black"><input type="text" name="accountno" /></font></td>
+												<td><font color="black">SECURITY ID:</font></td>
+												<td><font color="black"><input type="text" name="bankId" /></font></td>
 											</tr>
-											<tr>
-												<td><font color="black">USER NAME:</font></td>
-												<td><font color="black"><input type="text" name="username" /></font></td>
-											</tr>
-											<tr>
-												<td><font color="black">PASSWORD:</font></td>
-												<td><font color="black"><input type="password" name="password" /></font></td>
-											</tr>
+											
 											<tr>
 												<td><font color="black">TARGET ACCOUNT NO:</font></td>
 												<td><font color="black"><input type="text" name="taccountno" /></font></td>
@@ -162,8 +165,8 @@
 											
 											<tr>
 												<td></td>
-												<td><input type="submit" value=" SUBMIT " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<INPUT TYPE=RESET VALUE=" CLEAR" ></td>
+												<td><input type="submit" value="SUBMIT" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													
 											</tr>
 										</table>
 									</form></td>
@@ -172,23 +175,7 @@
 					</div>
 				</td>
 
-				<td width="250" valign="top">
-					<div id="welcome" style="border-right: #666666 1px dotted;">
-						<h1>Welcome</h1>
-						<br>
-						<center>
-							<img src="images/globe_10.gif" alt="business" width="196"
-								height="106">
-						</center>
-						<br>
-						<p>Each people plan their site layouts depending upon their
-							business type. Here comes a free designer template which provides
-							you with a selection of different kinds of webdesign starting
-							from business template, fashion template, media template, Science
-							template, Arts template and much more.</p>
-
-					</div>
-				</td>
+			
 
 
 			</tr>
@@ -203,12 +190,13 @@
 					to financial services provided by the HEM group family of
 					companies.</p>
 
-				Copyright Â© HEM Bank 2015
+				Copyright © HEM Bank 2015
 			</div>
 
 			<script type="text/javascript">
 document.onload = ctck();
 </script>
+		</div>
 		</div>
 </body>
 </html>
