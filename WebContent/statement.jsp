@@ -75,7 +75,6 @@ function navigate() {
 				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
 				<li><a href="userrating.jsp">USER RATING</a></li>
 				<li><a href="profile.jsp">PROFILE</a></li>
-
 			</ul>
 		</div>
 
@@ -170,8 +169,7 @@ try {
   
     <div id="footer_copyright" >
 		    <p>HEM Bank is the global source of information about and access to financial services provided by the HEM group family of companies.</p>
-	  
-  Copyright © HEM Bank 2015</div>
+</div>
 </div>
 
 <script type="text/javascript">

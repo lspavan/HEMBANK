@@ -5,42 +5,147 @@
 <title>HEM Banking ..</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <link href="rotate.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="rotate.js"></script>
+    <script type="text/javascript">
+      $(window).load(function() {
+        startRotator("#rotator");
+      })
+    </script>
+
 <SCRIPT type="text/javascript">
-	window.history.forward();
+
+
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+	
 	function noBack() { window.history.forward(); }
-</SCRIPT>
 
-<script type="text/javascript">
 	function ctck() {
-		var sds = document.getElementById("dum");
-
+		
+		window.history.go(-2);
 	}
+	
+	(function(){
+        var imgLen = document.getElementById('imgGallary');
+        var images = imgLen.getElementsByTagName('img');
+        var counter = 1;
+
+        if(counter <= images.length){
+            setInterval(function(){
+                images[0].src = images[counter].src;
+                console.log(images[counter].src);
+                counter++;
+
+                if(counter === images.length){
+                    counter = 1;
+                }
+            },4000);
+        }
+})();
 
 	
 </script>
 
+<style>
+  .container{
+            position:relative;
+            width:100%;
+            height:300px;
+            border-radius:5px;
+            border:1px solid red;
+            overflow:hidden;
+        }
+
+.dropbtn {
+    background-color: #0375B4;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px  black;
+    min-width: 160px;
+    box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
+
 </head>
 
-<body onload="noBack();" 
-	
+<body onload="noBack();"  >
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/Banklogo.JPG" width="100" height=60 /><br>
+
 	<div id="top_links">
 
-
-		<div id="header">
-			<h1>
-				HEM BANK<span class="style1"></span>
-			</h1>
-			<h2>TRANSCAT SIMPLE</h2>
-
-		</div>
-
+				<div id="rotator">
+      <img src="images/fixeddeposits.jpg" width="100" height="200" />
+            <img src="images/banking.jpg" width="100" height="200" />
+  </div>
+	
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<div id="navigation">
-			<ul>
-				<li><a href="create.html">NEW ACCOUNT</a></li>
-				<li><a href="login.jsp">LOGIN</a></li>
-			</ul>
+		
+		
+			<ul>			
+			  <li><div class="dropdown">
+    <button class="dropbtn">PERSONAL 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">ACTIVATE</a>
+      <a href="login.jsp">LOGIN</a>
+      
+    </div>
+  </div> </li>		
+			
+			
+			
 		</div>
 
+
+
+<div id="myDIV">
 		<table cellpadding="0" cellspacing="0" id="content1">
 			<tr align="justify">
 				<td class="con" valign="top">
@@ -78,7 +183,9 @@
 
 		<table style="width: 897px; background: #FFFFFF; margin: 0 auto;">
 			<tr align="justify">
-				<td width="299" valign="top"
+				
+
+			<td width="299" valign="top"
 					style="border-right: #666666 1px dotted;">
 					<div id="services">
 						<h1>Services</h1>
@@ -89,8 +196,7 @@
 
 					</div>
 				</td>
-
-				<td width="299" valign="top">
+<td width="299" valign="top">
 					<div id="welcome" style="border-right: #666666 1px dotted;">
 						<h1>Welcome</h1>
 						<br>
@@ -102,7 +208,7 @@
 						<p>At HEM Bank we want to help our customers do well. That’s
 							why we try to make it easy for you to succeed.</p>
 						<br>
-						
+						<!-- <p> Our banking products are simple and less complicated, and designed to keep your hard-earned money in your pocket. -->
 						<p>And we make it easy for you to keep on top of your online
 							banking options. With the right products and our knowledgeable
 							staff to guide you – we are confident there is no goal too high
@@ -110,7 +216,6 @@
 
 					</div>
 				</td>
-
 				<td width="299" valign="top">
 					<div id="news">
 						<h1>News &amp; Events</h1>
@@ -137,7 +242,7 @@
 				</td>
 			</tr>
 		</table>
-
+</div>
 		<div id="footer_top">
 			<div id="footer_navigation"></div>
 
@@ -150,6 +255,6 @@
 document.onload = ctck();
 </script>
 	</div>
-
+</div>
 </body>
 </html>
