@@ -38,7 +38,7 @@ var sds = document.getElementById("dum");
 	
     
     <td width="500" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER DETAILS HERE</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER PINCODE HERE</h1><br>
     	    <table  align="center" bgcolor="white">
 		<tr>
 		

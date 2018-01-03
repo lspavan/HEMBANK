@@ -42,7 +42,7 @@ function myFunction() {
 	
     
     <td width="550px" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER DETAILS HERE</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>PERSONAL NUMBER HERE</h1><br>
     	    <table  align="center" bgcolor="white">
 		<tr>
 		
@@ -56,7 +56,7 @@ function myFunction() {
 			 %></font></div>
 				<form name=F1  action="/HEMBANK/pincodelogin.jsp" >
 				   <table cellspacing="5" cellpadding="3">	
-				  <tr><td><font color="black">PERSONAL NUMBER</font></td><td> <input type="text" name="perNo"maxlength="12"/></td></tr>
+				  <tr><td><font color="black">PERSONAL NUMBER</font></td><td> <input type="text" name="perNo" maxlength="12"/></td></tr>
 							
 					<tr><td align="center"><input type="submit" value="Go" /></td> 
 					</tr>
@@ -68,13 +68,13 @@ function myFunction() {
     	   </div>      
     </td>
     
-    <td width="650px" valign="top">
+    <td width="450px" valign="top">
     	<div id="welcome" style="border-right:#666666 1px "><h1>Welcome</h1><br>
     	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
-		    <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
+		    <p align="center">At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
 		    <br>
 		     <!-- <p> Our banking products are simple and less complicated, and designed to keep your hard-earned money in your pocket. --> 
-		      <p>And we make it easy for you to keep on top of your online banking options.  With the right products and our knowledgeable staff to guide you – we are confident there is no goal too high for you to achieve.</p>
+		      <p align="center">And we make it easy for you to keep on top of your online banking options.  With the right products and our knowledgeable staff to guide you – we are confident there is no goal too high for you to achieve.</p>
 	    	
 	    </div>     
     </td>

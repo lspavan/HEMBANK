@@ -49,9 +49,49 @@
 		</div>
 
 		<div id="navigation">
-			<ul>
-						<li><a href="transfer1.jsp">TRANSFER</a></li>
-						<li><a href="paybill1.jsp">BILL PAY</a></li>						
+			<ul><li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+      <a href="statement.jsp">STATEMENT</a>
+				<a href="emailstatement.jsp">ESTATMENT</a>
+      
+    </div>
+  </div> </li>
+  
+  
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/paybill1.jsp">BILL PAY</a>      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+    <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>						
 			</ul>
 		</div>
 		
@@ -136,7 +176,7 @@ try {
 						<h1>FIXED DEPOSITS</h1>
 						<br>
 						<center>							
-								<a href="fixeddeposits.jsp"><img src="images/fixeddeposits.jpg" alt="business" width="196"
+								<a href="/HEMBANK/fixeddeposits.jsp"><img src="images/fixeddeposits.jpg" alt="business" width="196"
 								height="106"></a>								
 						</center>
 						<br>
@@ -195,7 +235,7 @@ try {
 						<h1>GOLD BONDS</h1>
 						<br>
 						<div class="img">
-							<a href="goldbond.jsp"><img src="images/goldbond.jpg" alt="business" width="196"
+							<a href="/HEMBANK/goldbond.jsp"><img src="images/goldbond.jpg" alt="business" width="196"
 								height="106"></a>
 						</div>
 						

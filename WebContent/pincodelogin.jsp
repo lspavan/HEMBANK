@@ -116,7 +116,7 @@ if(preCheck){
 	
     
     <td width="1200" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER DETAILS HERE</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER PINCODE HERE</h1><br>
     	    <table>
 		
 		<tr>
@@ -145,7 +145,7 @@ if(preCheck){
     </td>
     
     <td width="299" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>Welcome</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px;"><h1>Welcome</h1><br>
     	    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
 		    <p>At HEM Bank we want to help our customers do well. That’s why we try to make it easy for you to succeed.</p>
 		    <br>

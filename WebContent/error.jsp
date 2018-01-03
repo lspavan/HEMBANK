@@ -54,7 +54,12 @@ function navigate() {
 						<h1>Services</h1>
 						<br>
 						<ul>
-							<li><a href="#">https://www.hembank.se/</a></li>
+							<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
 						</ul>
 
 					</div>

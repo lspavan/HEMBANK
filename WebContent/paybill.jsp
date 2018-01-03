@@ -37,9 +37,50 @@ var sds = document.getElementById("dum");
 </div>
 
 <div id="navigation">
-    	<ul>	
-				<li><a href="/HEMBANK/transfer1.jsp">TRANSFER</a></li>
-				<li><a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a></li>
+    	<ul><li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+      <a href="statement.jsp">STATEMENT</a>
+				<a href="emailstatement.jsp">ESTATMENT</a>
+      
+    </div>
+  </div> </li>
+  
+  
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a>
+      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+   <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>
 			</ul>
 </div>
 
@@ -209,7 +250,7 @@ var sds = document.getElementById("dum");
 			out.print("Please check Bank Security");
 			request.setAttribute("balance","Please check Bank Security");
 			%>
-			<jsp:forward page="transfer1.jsp"></jsp:forward> 
+			<jsp:forward page="paybill1.jsp"></jsp:forward> 
 			<% 
 			}
 		 }catch (SQLException e) {

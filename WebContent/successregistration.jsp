@@ -115,7 +115,18 @@ function showPage() {
 <h2><p style="color:#3498DB">Registration is success... </p></h2>
 		<div id="navigation">
 			<ul>
-				<li><a href="login.jsp">Login</a></li>
+									  <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">RE-ACTIVATE</a>
+     <a href="/HEMBANK/create.html">CREATE</a>
+     <a href="/HEMBANK/deposit1.jsp">DEPOSIT</a>
+      
+    </div>
+  </div> </li>
+ 			
 			</ul>
 		</div>
 
@@ -138,6 +149,7 @@ function showPage() {
 			</tr></table>
 			</div>
 			
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 				<div id="footer_top">
 			<div id="footer_navigation"></div>
 
@@ -147,14 +159,14 @@ function showPage() {
 					companies.</p>
 
 				Copyright © HEM Bank 2015
-			</div>
+			</div></div>
+			
+		</div>
+			
 
 			<script type="text/javascript">
 					document.onload = ctck();
 				</script>
-		</div>
-			
-			</div>
 			</body></html>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="java.io.*"%>

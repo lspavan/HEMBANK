@@ -41,7 +41,16 @@ function navigate() {
      </p></h2>
 		<div id="navigation">
 			<ul>
-				<li><a href="login.jsp">Login</a></li>
+				<li><div class="dropdown">
+    <button class="dropbtn">PERSONAL
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">ACTIVATE</a>
+     <a href="/HEMBANK/login.jsp">LOGIN</a>
+       
+    </div>
+  </div> </li>
 			</ul>
 		</div>
 
@@ -55,7 +64,12 @@ function navigate() {
 						<h1>Services</h1>
 						<br>
 						<ul>
-							<li><a href="#">https://www.hembank.se/</a></li>
+							<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
 						</ul>
 
 					</div>

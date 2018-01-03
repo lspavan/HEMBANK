@@ -19,6 +19,9 @@
 	
 </script>
 
+<style>
+  
+</style>
 
 </head>
 
@@ -34,9 +37,8 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
 			<a href="logout.jsp">logout</a>
 		</div>
 
@@ -93,36 +95,76 @@
 
 
 			<div id="navigation">
+			
 				<ul>
-				
-				
-
-				
 					<%
 							if (perNo.equals("mHAahNKa+FFH8T0CqKtqXA==")) {
 						%>
-					<li><a href="/HEMBANK/create.html">REGISTRATION</a><q/li>
-					<li><a href="/HEMBANK/searchreactive.jsp">REACTIVATE</a></li>
-					<li><a href="/HEMBANK/deposit1.jsp">DEPOSIT</a></li>
+						  <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">RE-ACTIVATE</a>
+     <a href="/HEMBANK/create.html">CREATE</a>
+       <a href="/HEMBANK/deposit1.jsp">DEPOSIT</a>
+    </div>
+  </div> </li>
+ 				 
 					<%
 							} else {
 						%>
 
+  <li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+      <a href="statement.jsp">STATEMENT</a>
+				<a href="emailstatement.jsp">ESTATMENT</a>
+      
+    </div>
+  </div> </li>
+  
+  
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/paybill1.jsp">BILL PAY</a>
+	<a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a>
+      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>
 
-					<li><a href="/HEMBANK/balance.jsp">GET FUNDS</a></li>
-					<li><a href="/HEMBANK/managefunds.jsp">MANAGE FUNDS</a></li>
-					<li><a href="/HEMBANK/userrelated.jsp">USER RELATED</a></li>
-					<li><a href="/HEMBANK/about.jsp">ABOUT US</a></li>					
-
-
-					<%
-							}
+<%	}
 						%>
-
 				</ul>
-
-
-
 			</div>
 
 
@@ -148,9 +190,7 @@
 					</div>
 				</td>
 
-				<td width="1200" valign="top"><font color="black"> <%
- 	
- %>
+				<td width="1200" valign="top"><font color="black"> 
 						
 							<%
 									try {
@@ -200,10 +240,7 @@
 										e.printStackTrace();
 									}
 								%>
-						</table> <%
- 	
- %>
-		
+						</font></td></tr></table> 
 
 		<div id="footer_top">
 			<div id="footer_navigation"></div>

@@ -4,55 +4,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<SCRIPT LANGUAGE="JavaScript">
-	function dil(form) {
-		for (var i = 0; i < form.elements.length; i++) {
-			if (form.elements[i].value == "") {
-				alert("Fill out all Fields")
-				document.F1.accountno.focus()
-				return false
-			}
-		}
-
-		if (isNaN(document.F1.accountno.value)) {
-			alert("A/C No.  must  be  number & can't be null")
-			document.F1.accountno.value = ""
-			document.F1.accountno.focus()
-			return false
-		}
-
-		if (!isNaN(document.F1.username.value)) {
-			alert("User Name  must  be  char's & can't be null")
-			document.F1.username.value = ""
-			document.F1.username.focus()
-			return false
-		}
-
-		if (!isNaN(document.F1.password.value)) {
-			alert("Password  must  be  char's & can't be null")
-			document.F1.password.value = ""
-			document.F1.password.focus()
-			return false
-		}
-
-		if (isNaN(document.F1.amount.value)) {
-			alert("Amount  must  be  number & can't be null")
-			document.F1.amount.value = ""
-			document.F1.amount.focus()
-			return false
-		}
-
-		return true
-	}
-	
-	function navigate(){ 
-		window.history.forward();
-		window.history.go(-2);
-	    window.location.replace('http://localhost:8089/HEMBANK/');
-	   return false;
-	}
-	
-</SCRIPT>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>HEM Banking ..</title>
@@ -89,8 +40,16 @@
 
 		<div id="navigation">
 			<ul>
-			<li><a href="/HEMBANK/create.html">REGISTRATION</a></li>					
-					<li><a href="/HEMBANK/deposit1.jsp">DEPOSIT</a></li>
+					  <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">RE-ACTIVATE</a>
+     <a href="/HEMBANK/create.html">CREATE</a>
+    </div>
+  </div> </li>
+ 				  
 			
 			</ul>
 		</div>
@@ -105,7 +64,12 @@
 						<h1>Services</h1>
 						<br>
 						<ul>
-							<li><a href="#">www.hembank.se</a></li>
+							<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
 						</ul>
 
 					</div>
@@ -143,7 +107,7 @@
 											<tr>
 												<td></td>
 												<td><input type="submit" value="Submit" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<INPUT TYPE=RESET VALUE="CLEAR"></td>
+													</td>
 											</tr>
 										</table>
 									</form></td>
@@ -170,7 +134,7 @@
 		<script type="text/javascript">
 document.onload = ctck();
 </script>
-	</div>
+	
 
 </body>
 </html>

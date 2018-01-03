@@ -128,7 +128,7 @@ if(preCheck){
 	
     
     <td width="1200" valign="top">
-    	<div id="welcome" style="border-right:#666666 1px dotted;"><h1>ENTER DETAILS HERE</h1><br>
+    	<div id="welcome" style="border-right:#666666 1px ;"><h1>ENTER DETAILS HERE</h1><br>
     	    <table  align="center" bgcolor="white">
 		<tr>
 		
@@ -146,11 +146,11 @@ if(preCheck){
 				  
 			
 			<div data-role="controlgroup" data-type="horizontal">
-				<input type="text" id="numpadButton" data-wrapper-class="controlgroup-textinput ui-btn" value="0" maxlength="4" name="pincode" >
+				<input type="password" id="numpadButton" data-wrapper-class="controlgroup-textinput ui-btn" value="0" maxlength="4" name="pincode" >
 				<button id="numpadButton-btn" class="ui-btn ui-icon-grid ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" onclick="noSubmit();return false;">&nbsp;</button>
 			</div>
         			<input type="hidden" name="hiddenperNo" value="<%=perNo%>"/>
-				  </td> <td align="cener"><input type="submit" value="Go"/></td> </tr>
+				  </td> <td align="center"><input type="submit" value="Go"/></td> </tr>
 							
 								
                    

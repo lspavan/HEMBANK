@@ -136,10 +136,18 @@ var sds = document.getElementById("dum");
 			<h2>TRANSCAT SIMPLE</h2>
 
 </div>
-
+<br>
 <div id="navigation">
   <ul>   
-    
+    <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">RE-ACTIVATE</a>     
+       <a href="/HEMBANK/deposit1.jsp">DEPOSIT</a>
+    </div>
+  </div> </li>
     </ul>
 </div>
 
@@ -160,7 +168,7 @@ var sds = document.getElementById("dum");
 				<form name=F1 onSubmit="return dil(this)" action="CreateServlet" >
 				  <table cellspacing="5" cellpadding="3">	
 				
-					<tr><td><font color="black">PERSONAL NUMBER:</font><span style="color:red;">*</span></td><td> <input  type="text" name="personalnumber" title="Please enter your username here which is further used for login"/></td></tr>
+					<tr><td><font color="black">PERSONAL NUMBER:</font><span style="color:red;">*</span></td><td> <input  type="text" name="personalnumber" maxlength="12" title="Please enter your username here which is further used for login"/></td></tr>
 					<tr><td><font color="black">FULL NAME:</font><span style="color:red;">*</span></td><td> <input type="text" name="fullname" title="Please enter your First Name and last Name here"/></td></tr>
 					<!-- <tr><td><font color="black">PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="password"   maxlength="7" title="Please enter password of 7 characters maximum"/></td></tr>
 					<tr><td><font color="black">RE-PASSWORD:</font><span style="color:red;">*</span></td><td> <input type="password" name="repassword" maxlength="7" title="Please enter retype password same as password which is of 7 character in length"/></td></tr>
@@ -171,8 +179,7 @@ var sds = document.getElementById("dum");
 					<tr><td><font color="black">PHONE:</font><span style="color:red;">*</span></td><td> <input type="text" name="phone" title="Please provide mobile and land number here"  maxlength="10"/></td></tr>
 					<tr><td><font color="black">Email:</font><span style="color:red;">*</span></td><td> <input type="text" name="email" title="Please provide Valid Email here"/></td></tr>
 					<tr><td></td><td><input type="submit" value="Submit"/>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
+					
 					</table>
                		</form>
 			</td>

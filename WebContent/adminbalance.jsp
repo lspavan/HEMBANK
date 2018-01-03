@@ -39,7 +39,16 @@ var sds = document.getElementById("dum");
 
 <div id="navigation">
      <ul>
-				
+						  <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="activate.jsp">RE-ACTIVATE</a>
+     <a href="/HEMBANK/create.html">CREATE</a>
+       <a href="/HEMBANK/deposit1.jsp">DEPOSIT</a>
+    </div>
+  </div> </li>
 			</ul>
 </div>
 
@@ -50,7 +59,12 @@ var sds = document.getElementById("dum");
 	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
+        	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
             </ul>
 			
        </div>

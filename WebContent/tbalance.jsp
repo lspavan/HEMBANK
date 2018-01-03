@@ -22,7 +22,7 @@ var sds = document.getElementById("dum");
   
 
 <div id="header">
-	<h1>HEM - BANK<span class="style1"></span></h1>
+	<h1>HEMBANK<span class="style1"></span></h1>
     <h2>TRANSCAT SIMPLE</h2>	
 
     <A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>	
@@ -39,13 +39,51 @@ var sds = document.getElementById("dum");
 </div>
 
 <div id="navigation">
- 	<ul>		<li><a href="balance.jsp">VIEW BALANCE</a></li>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
-				<li><a href="transfer1.jsp">TRANSFER</a></li>				
-				<li><a href="financialdev.jsp">FINCIALDEV</a></li>
-				<li><a href="userrating.jsp">USER RATING</a></li>
-				<li><a href="profile.jsp">PROFILE</a></li>
+ 	<ul>		
+ 	<li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+      <a href="statement.jsp">STATEMENT</a>
+				<a href="emailstatement.jsp">ESTATMENT</a>
+      
+    </div>
+  </div> </li>
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/paybill1.jsp">BILL PAY</a>
+	<a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a>
+      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+  <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>
+				
 			</ul>
 </div>
 
@@ -56,8 +94,12 @@ var sds = document.getElementById("dum");
 	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
-          
+          	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>          
             </ul>
 			
        </div>
@@ -65,9 +107,8 @@ var sds = document.getElementById("dum");
     
     <td width="1200" valign="top">
     	
-    	<% 
-%>
-<table border="2" align="center" width="60%" height="60%" bgcolor="white">
+    	
+<table border="2" align="center" width="60%" hight="60%" bgcolor="white">
 		<tr>
 			<td align="center" valign="middle" bgcolor="blue"><h4>Accounts Info</h4></td>
 		</tr>
@@ -91,10 +132,20 @@ var sds = document.getElementById("dum");
 		 </table>
 
 
+ <div id="footer_navigation"></div>
+
+			<div id="footer_copyright">
+				<p>HEM Bank is the global source of information about and access
+					to financial services provided by the HEM group family of
+					companies.</p>
+
+				Copyright © HEM Bank 2015
+			</div>
+		</div>
  
 
 
 
-</div></body>
+</body>
 	
 </html>

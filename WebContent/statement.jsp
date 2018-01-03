@@ -64,15 +64,53 @@ function navigate() {
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="logout.jsp" >logout</a>
-
+			<a href="logout.jsp" >logout</a></div>
+<br>
 		<div id="navigation">
-			<ul>
-							
-				<li><a href="emailstatement.jsp">ESTATMENT</a></li>	
-				
-
-			</ul>
+			<ul><li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+	<a href="emailstatement.jsp">ESTATMENT</a>      
+    </div>
+  </div> </li>
+  
+  
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/paybill1.jsp">BILL PAY</a>
+	<a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a>
+      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+   <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>
+  </ul>
 		</div>
 
 

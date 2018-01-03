@@ -33,6 +33,9 @@
                               <p align="justify" class="bodytextheading" style="color:blue;font-size:20px;"> Our Mission</p>
                               <p align="justify">While we're a global bank, our mission is simple: We responsibly provide financial services that enable growth and economic progress.</p>
                               
+                               <p align="justify" class="bodytextheading" style="color:blue;font-size:20px;">Contact US</p>
+                              <p align="justify">For Media Queries, please contact hem.banking@gmail.com</p>
+                             
                               
                               <p align="justify"><font color="blue" size="5px">International Business</font><br>HEM International Business specialises in providing a range of services to overseas customers seeking to invest in India. For institutions and high net worth individuals outside India, Kotak International Business offers asset management through a range of offshore funds with specific advisory and discretionary investment management services..</p>
                       <!-- InstanceEndEditable --></td>

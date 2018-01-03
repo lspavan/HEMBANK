@@ -39,13 +39,52 @@ var sds = document.getElementById("dum");
 
 <div id="navigation">
      <ul>
-				<li><a href="statement.jsp">STATEMENT</a></li>
-				<li><a href="deposit1.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw1.jsp">WITHDRAW</a></li>
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="closeac1.jsp">CLOSE A/C</a></li>
-				<li><a href="viewprofile.jsp">PROFILE</a></li>
-				<li><a href="about.jsp">Contact Us</a></li>
+ <li><div class="dropdown">
+    <button class="dropbtn">GET FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+     <a href="/HEMBANK/balance.jsp">BALANCE</a>
+      <a href="statement.jsp">STATEMENT</a>
+				<a href="emailstatement.jsp">ESTATMENT</a>
+      
+    </div>
+  </div> </li>
+  
+  
+  
+ <li><div class="dropdown">
+    <button class="dropbtn">MANAGE FUNDS 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/HEMBANK/transfer1.jsp">TRANSFER</a>
+	<a href="/HEMBANK/paybill1.jsp">BILL PAY</a>
+	<a href="/HEMBANK/financialdev.jsp">FINCIALDEV</a>
+      
+    </div>
+  </div> </li>
+  
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">USER RELATED
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/userrating.jsp">USER RATING</a>
+<a href="/HEMBANK/profile.jsp">PROFILE</a>
+      
+    </div>
+  </div> </li>
+  
+   <li><div class="dropdown">
+    <button class="dropbtn">ABOUT US
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+<a href="/HEMBANK/about.jsp">ABOUT US</a>      
+    </div>
+  </div> </li>
 			</ul>
 </div>
 
@@ -56,7 +95,12 @@ var sds = document.getElementById("dum");
 	<td width="300" valign="top" style="border-right:#666666 1px dotted;">
     	<div id="services"><h1>Services</h1><br>
 		    <ul>
-        	<li><a href="#">www.hembank.se</a></li>
+        	<li>
+<a href="/HEMBANK/quicklinks.html" 
+  target="popup" 
+  onclick="window.open('/HEMBANK/quicklinks.html','popup','width=600,height=600'); return false ;">
+   Quick Links
+</a></li>
             </ul>
 			
        </div>
